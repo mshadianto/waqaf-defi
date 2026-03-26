@@ -7,14 +7,15 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Blockchain-Polygon_L2-8247E5?style=flat-square" alt="Polygon">
-  <img src="https://img.shields.io/badge/Token-ERC--1400-10B981?style=flat-square" alt="ERC-1400">
+  <img src="https://img.shields.io/badge/Token-ERC--20_(WAQF)-10B981?style=flat-square" alt="WAQF">
   <img src="https://img.shields.io/badge/Sharia-AAOIFI_No.60-F59E0B?style=flat-square" alt="AAOIFI">
   <img src="https://img.shields.io/badge/Regulasi-DSN--MUI_No.132-3B82F6?style=flat-square" alt="DSN-MUI">
   <img src="https://img.shields.io/badge/Status-Proof_of_Concept-8B5CF6?style=flat-square" alt="PoC">
 </p>
 
 <p align="center">
-  <a href="https://mshadianto.github.io/waqaf-defi/"><strong>&#x1F680; Live Demo</strong></a>
+  <a href="https://mshadianto.github.io/waqaf-defi/"><strong>&#x1F680; Live Demo</strong></a> &nbsp;|&nbsp;
+  <a href="https://amoy.polygonscan.com/address/0x8C6D7f1bE4BDECaB43d5FD07057733b37753cc25#code"><strong>&#x1F4DC; Verified Contract</strong></a>
 </p>
 
 ---
@@ -77,50 +78,83 @@
 
 ---
 
-## Smart Contract
+## Smart Contract (Deployed & Verified)
 
-Smart contract utama menggunakan **ERC-1400** (Security Token Standard) dengan built-in compliance:
+Smart contract **WaqfToken** sudah **deployed dan verified** di Polygon Amoy Testnet:
+
+| Item | Detail |
+|------|--------|
+| **Contract** | [`0x8C6D7f1bE4BDECaB43d5FD07057733b37753cc25`](https://amoy.polygonscan.com/address/0x8C6D7f1bE4BDECaB43d5FD07057733b37753cc25#code) |
+| **Network** | Polygon Amoy Testnet (Chain ID: 80002) |
+| **Token** | WaqFi Token (WAQF) — ERC-20 |
+| **Verified** | [Polygonscan](https://amoy.polygonscan.com/address/0x8C6D7f1bE4BDECaB43d5FD07057733b37753cc25#code) + [Sourcify](https://repo.sourcify.dev/contracts/full_match/80002/0x8C6D7f1bE4BDECaB43d5FD07057733b37753cc25/) |
+| **Test Suite** | 18 tests — all passing |
+
+### Flow End-to-End On-Chain
+
+```
+Wakif ──→ setKYCStatus() ──→ mintWaqfToken() ──→ holds WAQF tokens
+                                                        │
+Nazhir ──→ distributeROI{value: POL}() ──→ beneficiaries receive POL
+```
+
+### Fungsi Utama
+
+| Fungsi | Akses | Deskripsi |
+|--------|-------|-----------|
+| `mintWaqfToken(projectId, amount)` | KYC Wakif | Mint WAQF token, min Rp 10.000 |
+| `distributeROI(projectId)` payable | Nazhir | Kirim POL, auto-split ke semua beneficiary |
+| `createProject(name, pillar, nazhir)` | Nazhir | Buat proyek baru (4 pilar) |
+| `setKYCStatus(account, bool)` | KYC Admin | Verifikasi identitas wakif |
+| `addBeneficiary(account)` | Nazhir | Tambah penerima manfaat |
+| `getContributions(wakif)` | Public | Riwayat kontribusi per wakif |
+
+### Kode Smart Contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-contract WaqfToken is ERC1400 {
+contract WaqfToken is ERC20, AccessControl, ReentrancyGuard {
+
+    enum PillarType { AsetTetap, WakafUang, MelaluiUang, UsahaProduktif }
+
     struct WaqfProject {
         string name;
-        uint8 pillarType;    // 1-4
-        uint256 totalValue;
-        uint256 totalTokens;
+        PillarType pillar;
+        uint256 totalRaised;
+        uint256 totalTokensMinted;
         address nazhir;
-        bool shariaCompliant;
+        bool active;
     }
 
     // KYC-verified minting dengan minimum Rp 10.000
-    function mintWaqfToken(address _wakif, uint256 _projectId, uint256 _amount)
-        external onlyKYCVerified(_wakif) { ... }
+    function mintWaqfToken(uint256 projectId, uint256 amount)
+        external nonReentrant { ... }
 
-    // Distribusi ROI otomatis ke seluruh beneficiary
-    function distributeROI(uint256 _projectId, uint256 _totalROI)
-        external onlyNazhir { ... }
+    // Distribusi ROI (native POL) ke semua beneficiary
+    function distributeROI(uint256 projectId)
+        external payable onlyRole(NAZHIR_ROLE) nonReentrant { ... }
 }
 ```
-
-**Kontrak Pendukung:**
-- `WaqfFactory.sol` — Factory pattern untuk membuat proyek wakaf baru
-- `ComplianceModule.sol` — Enforcement kepatuhan syariah on-chain
-- `ROIDistributor.sol` — Distribusi ROI proporsional otomatis
 
 ### Spesifikasi Token
 
 | Parameter | Detail |
 |-----------|--------|
 | Token Name | WaqFi Token (WAQF) |
-| Standard | ERC-1400 |
-| Network | Polygon (Ethereum L2) |
-| Minimum Mint | Rp 10.000 |
+| Standard | ERC-20 + AccessControl + ReentrancyGuard |
+| Network | Polygon Amoy Testnet (L2) |
+| Minimum Mint | Rp 10.000 (10,000 units) |
 | Gas Fee | ~$0.01 per transaksi |
 | Confirmation | ~2 detik |
-| Audit Library | OpenZeppelin |
+| Library | OpenZeppelin Contracts |
+
+### Data On-Chain (Seeded)
+
+- 4 proyek wakaf (satu per pilar)
+- 500 WAQF minted untuk Masjid Al-Ikhlas Jakarta
+- 3 beneficiary terdaftar
 
 ---
 
@@ -181,44 +215,59 @@ Fitur demo:
 ### Cara Menjalankan Lokal
 
 ```bash
-# Gunakan local server (diperlukan untuk ES module imports)
+# 1. Install dependencies
+npm install
+
+# 2. Frontend — local server (diperlukan untuk ES module imports)
 npx serve .
+# atau: python -m http.server 3000
+# lalu buka http://localhost:3000
 
-# Atau Python
-python -m http.server 3000
+# 3. Smart contract — compile & test
+npx hardhat compile
+npx hardhat test                                    # 18 tests
 
-# Lalu buka http://localhost:3000
+# 4. Deploy ke Polygon Amoy (butuh .env dengan DEPLOYER_PRIVATE_KEY)
+npx hardhat run scripts/deploy.js --network amoy
+
+# 5. Verify di Polygonscan (butuh ETHERSCAN_API_KEY di .env)
+npx hardhat verify --network amoy <CONTRACT_ADDRESS>
 ```
 
-> **Catatan:** Buka langsung via `file://` tidak didukung karena browser memblokir ES module imports dari file system. Gunakan local server.
+> **Catatan:** Buka langsung via `file://` tidak didukung karena browser memblokir ES module imports. Gunakan local server.
 
 ### Struktur Project
 
 ```
 waqaf-defi/
-├── index.html              ← Entry point (modular version)
+├── contracts/
+│   └── WaqfToken.sol       ← Smart contract (deployed & verified)
+├── scripts/
+│   └── deploy.js           ← Deploy + seed demo data
+├── test/
+│   └── WaqfToken.test.js   ← 18 tests (e2e flow)
+├── hardhat.config.js       ← Hardhat config (Amoy network)
+├── index.html              ← Frontend entry point
 ├── waqfi-platform.html     ← Original monolithic demo (legacy)
 ├── css/
 │   ├── variables.css       ← Design tokens
 │   ├── base.css            ← Reset & global styles
 │   ├── animations.css      ← Keyframes & scroll-reveal
 │   ├── components.css      ← All UI components
+│   ├── pillar.css          ← Pillar detail page styles
 │   └── responsive.css      ← Breakpoints & a11y
 ├── js/
 │   ├── app.js              ← Entry point & orchestrator
 │   ├── config.js           ← Constants & configuration
 │   ├── state.js            ← Reactive state manager (EventTarget)
-│   ├── blockchain.js       ← Block mining & tx engine
+│   ├── blockchain.js       ← Simulation engine
 │   ├── wallet.js           ← Wallet connection
-│   └── ui/
-│       ├── toast.js        ← Toast notifications
-│       ├── hero.js         ← Hero blockchain visual
-│       ├── explorer.js     ← Chain display & tx table
-│       ├── dashboard.js    ← KPI cards & impact meters
-│       ├── charts.js       ← Bar & donut charts
-│       ├── mint.js         ← Mint form & ROI distribution
-│       ├── scroll.js       ← Scroll effects & navigation
-│       └── txfeed.js       ← Live transaction feed
+│   └── ui/                 ← UI modules (toast, hero, explorer, ...)
+├── pillar/
+│   ├── aset-tetap.html     ← Pilar 1 mockup
+│   ├── wakaf-uang.html     ← Pilar 2 mockup
+│   ├── melalui-uang.html   ← Pilar 3 mockup
+│   └── usaha-produktif.html← Pilar 4 mockup
 ├── README.md
 └── CLAUDE.md
 ```
@@ -231,7 +280,7 @@ waqaf-defi/
 |------|-------|----------|
 | **Dr. Yaser Taufik S.** | Ketua Tim | Universitas Tazkia |
 | **MS. Hadianto, SE, Ak, MM** | Tech & AI Lead | [github.com/mshadianto](https://github.com/mshadianto) |
-| **Asnan Purba, LC, MHI** | Sharia Compliance | Islamic Law Expert |
+| **H. Asnan Purba, Lc.M.Pd.I, CWC** | Sharia Compliance | Wakil Sekretaris ANI, Asesor BWI Pusat |
 | **Ronal Rulindo, PhD** | Research Lead | Academic Research |
 | **M. Ichsan Junaedi** | Dev Engineer | [github.com/IchsanJunaedi](https://github.com/IchsanJunaedi) |
 
@@ -241,7 +290,8 @@ waqaf-defi/
 
 | Layer | Teknologi |
 |-------|-----------|
-| Blockchain | Polygon (Ethereum L2), Solidity ^0.8.20, ERC-1400, OpenZeppelin |
+| Smart Contract | Solidity ^0.8.20, Hardhat, OpenZeppelin, ERC-20 + AccessControl |
+| Blockchain | Polygon Amoy Testnet (L2), deployed & verified on Polygonscan |
 | Backend | Node.js, Go, PostgreSQL, Redis, RabbitMQ, IPFS |
 | Frontend | Next.js, TypeScript, React Native |
 | PoC Demo | Vanilla HTML/CSS/JS, ES Modules, EventTarget State |
