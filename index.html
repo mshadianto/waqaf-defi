@@ -1,408 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WaqFi — Wakaf DeFi: Platform Tokenisasi Wakaf Berbasis Blockchain</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-<style>
-/*═══════════════════════════════════════════════════════════════
-  WaqFi Design System — Luxury Islamic Fintech
-  Aesthetic: Dark luxury meets Islamic geometric precision
-═══════════════════════════════════════════════════════════════*/
-:root {
-  --bg-void: #060A10;
-  --bg-deep: #0B1120;
-  --bg-card: #111B2E;
-  --bg-card-h: #162240;
-  --bg-surface: #1A2744;
-  --tx-white: #F1F5F9;
-  --tx-light: #CBD5E1;
-  --tx-muted: #64748B;
-  --tx-dim: #475569;
-  --emerald: #10B981;
-  --emerald-l: #34D399;
-  --emerald-d: #059669;
-  --gold: #F59E0B;
-  --gold-l: #FBBF24;
-  --sapphire: #3B82F6;
-  --amethyst: #8B5CF6;
-  --ruby: #EF4444;
-  --teal: #14B8A6;
-  --border: rgba(148,163,184,0.07);
-  --border-a: rgba(16,185,129,0.2);
-  --glass: rgba(11,17,32,0.75);
-  --glow-e: 0 0 40px rgba(16,185,129,0.15);
-  --glow-g: 0 0 40px rgba(245,158,11,0.1);
-  --r-s: 6px; --r-m: 10px; --r-l: 16px; --r-xl: 24px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:15px}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg-void);color:var(--tx-white);overflow-x:hidden;line-height:1.65}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WaqFi — Platform DeFi syariah pertama yang men-tokenisasi seluruh jenis wakaf dengan transparansi 100% di blockchain Polygon.">
+  <meta name="theme-color" content="#060A10">
 
-/* BG Layers */
-.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 900px 700px at 15% 15%,rgba(16,185,129,0.05),transparent),
-    radial-gradient(ellipse 700px 500px at 85% 75%,rgba(59,130,246,0.04),transparent),
-    radial-gradient(ellipse 500px 400px at 50% 50%,rgba(139,92,246,0.025),transparent)}
-.bg-pattern{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3;
-  background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
-  background-size:80px 80px}
+  <!-- Open Graph -->
+  <meta property="og:title" content="WaqFi — Wakaf DeFi: Platform Tokenisasi Wakaf Berbasis Blockchain">
+  <meta property="og:description" content="Platform DeFi syariah pertama untuk tokenisasi wakaf di Polygon L2. Kontribusi mulai Rp 10.000.">
+  <meta property="og:type" content="website">
 
-/* Scrollbar */
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg-void)}
-::-webkit-scrollbar-thumb{background:var(--emerald);border-radius:3px}
+  <title>WaqFi — Wakaf DeFi: Platform Tokenisasi Wakaf Berbasis Blockchain</title>
 
-/* ═══ ANIMATIONS ═══ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes slideR{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(16,185,129,0.2)}50%{box-shadow:0 0 40px rgba(16,185,129,0.4)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes hashScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes countUp{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
-@keyframes blockMine{0%{transform:scale(0.9);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
-.anim-up{animation:fadeUp .7s ease both}
-.anim-in{animation:fadeIn .5s ease both}
-.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
-/* ═══ TOPBAR ═══ */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 36px;
-  background:rgba(6,10,16,0.88);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.logo-g{display:flex;align-items:center;gap:12px;cursor:pointer}
-.logo-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--emerald),var(--sapphire));position:relative;overflow:hidden}
-.logo-icon::after{content:'وقف';font-family:'Amiri',serif;font-size:14px;color:white;font-weight:700}
-.logo-txt{font-family:'Playfair Display',serif;font-size:21px;font-weight:800;letter-spacing:1.5px}
-.logo-txt em{font-style:normal;color:var(--emerald)}
-.logo-sub{font-size:10px;color:var(--tx-muted);letter-spacing:3px;text-transform:uppercase;margin-top:-2px}
-nav{display:flex;gap:6px;align-items:center}
-nav a{color:var(--tx-muted);text-decoration:none;font-size:12.5px;font-weight:600;padding:8px 16px;
-  border-radius:8px;transition:all .3s;letter-spacing:.3px;text-transform:uppercase}
-nav a:hover,nav a.active{color:var(--emerald);background:rgba(16,185,129,0.08)}
-.btn-connect{background:linear-gradient(135deg,var(--emerald),var(--emerald-d));color:white;
-  padding:9px 22px;border-radius:8px;border:none;font-weight:700;font-size:12px;cursor:pointer;
-  letter-spacing:.5px;text-transform:uppercase;transition:all .3s;font-family:inherit}
-.btn-connect:hover{transform:translateY(-1px);box-shadow:var(--glow-e)}
-
-/* ═══ SECTIONS ═══ */
-section{position:relative;z-index:1}
-.container{max-width:1280px;margin:0 auto;padding:0 36px}
-.section-pad{padding:100px 0}
-
-/* ═══ HERO ═══ */
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden}
-.hero-geo{position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:600px;height:600px;
-  opacity:0.04;pointer-events:none}
-.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.08);
-  border:1px solid var(--border-a);padding:6px 16px;border-radius:20px;font-size:11px;
-  font-weight:600;color:var(--emerald-l);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
-.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite}
-.hero h1{font-family:'Playfair Display',serif;font-size:3.6rem;font-weight:900;line-height:1.1;margin-bottom:20px}
-.hero h1 .accent{color:var(--emerald);position:relative}
-.hero h1 .gold{color:var(--gold)}
-.hero-desc{font-size:1.05rem;color:var(--tx-light);line-height:1.75;margin-bottom:36px;max-width:520px}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-.hero-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:20px;
-  text-align:center;transition:all .4s}
-.hero-stat:hover{border-color:var(--border-a);transform:translateY(-3px)}
-.hero-stat .num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;color:var(--emerald-l)}
-.hero-stat .lbl{font-size:11px;color:var(--tx-muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
-.hero-right{position:relative}
-.hero-visual{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);
-  padding:32px;position:relative;overflow:hidden}
-.hero-visual::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--emerald),var(--sapphire),var(--amethyst))}
-
-/* Blockchain visual in hero */
-.chain-viz{display:flex;flex-direction:column;gap:14px}
-.block-row{display:flex;align-items:center;gap:10px;animation:slideR .6s ease both}
-.block-item{flex:1;background:var(--bg-deep);border:1px solid var(--border);border-radius:8px;
-  padding:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;position:relative;overflow:hidden}
-.block-item.active{border-color:var(--emerald);box-shadow:0 0 20px rgba(16,185,129,0.1)}
-.block-item .bh{color:var(--emerald);font-weight:600;margin-bottom:6px;font-size:11px}
-.block-item .bd{color:var(--tx-muted);font-size:9.5px;word-break:break-all}
-.chain-arrow{color:var(--emerald);font-size:16px;text-align:center;opacity:0.5}
-
-/* ═══ 4 PILAR ═══ */
-.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
-.pillar-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);
-  padding:32px 24px;transition:all .5s;position:relative;overflow:hidden;cursor:pointer}
-.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:all .4s}
-.pillar-card:nth-child(1)::before{background:var(--emerald)}
-.pillar-card:nth-child(2)::before{background:var(--sapphire)}
-.pillar-card:nth-child(3)::before{background:var(--gold)}
-.pillar-card:nth-child(4)::before{background:var(--amethyst)}
-.pillar-card:hover{transform:translateY(-6px);border-color:var(--border-a);background:var(--bg-card-h)}
-.pillar-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;opacity:0.08;
-  position:absolute;top:10px;right:16px}
-.pillar-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-  font-size:24px;margin-bottom:18px}
-.pillar-card:nth-child(1) .pillar-icon{background:rgba(16,185,129,0.1);color:var(--emerald)}
-.pillar-card:nth-child(2) .pillar-icon{background:rgba(59,130,246,0.1);color:var(--sapphire)}
-.pillar-card:nth-child(3) .pillar-icon{background:rgba(245,158,11,0.1);color:var(--gold)}
-.pillar-card:nth-child(4) .pillar-icon{background:rgba(139,92,246,0.1);color:var(--amethyst)}
-.pillar-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:10px}
-.pillar-card p{font-size:13px;color:var(--tx-muted);line-height:1.7}
-.pillar-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  padding:4px 10px;border-radius:4px;margin-top:14px}
-.pillar-card:nth-child(1) .pillar-tag{background:rgba(16,185,129,0.1);color:var(--emerald)}
-.pillar-card:nth-child(2) .pillar-tag{background:rgba(59,130,246,0.1);color:var(--sapphire)}
-.pillar-card:nth-child(3) .pillar-tag{background:rgba(245,158,11,0.1);color:var(--gold)}
-.pillar-card:nth-child(4) .pillar-tag{background:rgba(139,92,246,0.1);color:var(--amethyst)}
-
-/* Section headers */
-.sec-hdr{text-align:center;margin-bottom:48px}
-.sec-hdr .overline{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:var(--emerald);margin-bottom:12px}
-.sec-hdr h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800}
-.sec-hdr .sub{font-size:1rem;color:var(--tx-muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto}
-
-/* ═══ SMART CONTRACT DEMO ═══ */
-.sc-demo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
-.sc-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);overflow:hidden}
-.sc-panel-hdr{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;
-  justify-content:space-between}
-.sc-panel-hdr h3{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
-.sc-panel-hdr .status{font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600}
-.status-live{background:rgba(16,185,129,0.12);color:var(--emerald)}
-.status-pending{background:rgba(245,158,11,0.12);color:var(--gold)}
-.sc-code{padding:20px 24px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.8;
-  color:var(--tx-light);max-height:360px;overflow-y:auto;background:var(--bg-deep)}
-.sc-code .kw{color:var(--sapphire)}
-.sc-code .fn{color:var(--gold)}
-.sc-code .str{color:var(--emerald-l)}
-.sc-code .cm{color:var(--tx-dim);font-style:italic}
-.sc-code .num{color:var(--amethyst)}
-.sc-interact{padding:24px}
-.sc-form-row{display:flex;gap:12px;margin-bottom:14px;align-items:end}
-.sc-field{flex:1}
-.sc-field label{display:block;font-size:11px;font-weight:600;color:var(--tx-muted);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.sc-field input,.sc-field select{width:100%;background:var(--bg-deep);border:1px solid var(--border);
-  border-radius:var(--r-s);padding:11px 14px;color:var(--tx-white);font-family:inherit;font-size:13px;
-  transition:border-color .3s;outline:none}
-.sc-field input:focus,.sc-field select:focus{border-color:var(--emerald)}
-.sc-field select option{background:var(--bg-deep)}
-.btn-mint{background:linear-gradient(135deg,var(--emerald),var(--emerald-d));color:white;
-  border:none;padding:12px 28px;border-radius:var(--r-s);font-weight:700;font-size:13px;
-  cursor:pointer;transition:all .3s;font-family:inherit;letter-spacing:.3px;min-width:160px}
-.btn-mint:hover{transform:translateY(-2px);box-shadow:var(--glow-e)}
-.btn-mint:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-.btn-dist{background:linear-gradient(135deg,var(--gold),#D97706);color:white;
-  border:none;padding:12px 28px;border-radius:var(--r-s);font-weight:700;font-size:13px;
-  cursor:pointer;transition:all .3s;font-family:inherit;letter-spacing:.3px}
-.btn-dist:hover{transform:translateY(-2px);box-shadow:var(--glow-g)}
-
-/* ═══ BLOCKCHAIN EXPLORER ═══ */
-.explorer-wrap{margin-top:40px}
-.chain-display{display:flex;gap:16px;overflow-x:auto;padding:20px 0;scroll-snap-type:x mandatory}
-.chain-block{min-width:260px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);
-  padding:20px;scroll-snap-align:start;transition:all .4s;animation:blockMine .5s ease both;flex-shrink:0}
-.chain-block:hover{border-color:var(--emerald);transform:translateY(-4px)}
-.chain-block.genesis{border-color:var(--gold);background:linear-gradient(135deg,var(--bg-card),rgba(245,158,11,0.05))}
-.cb-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.cb-num{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800}
-.cb-type{font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
-.cb-type.mint{background:rgba(16,185,129,0.12);color:var(--emerald)}
-.cb-type.dist{background:rgba(245,158,11,0.12);color:var(--gold)}
-.cb-type.gen{background:rgba(59,130,246,0.12);color:var(--sapphire)}
-.cb-row{display:flex;justify-content:space-between;font-size:11px;padding:5px 0;border-bottom:1px solid var(--border)}
-.cb-row:last-child{border:none}
-.cb-label{color:var(--tx-dim);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.cb-val{color:var(--tx-light);font-family:'JetBrains Mono',monospace;font-size:10px;max-width:140px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cb-connector{display:flex;align-items:center;color:var(--emerald);font-size:20px;opacity:0.3;flex-shrink:0}
-
-/* Hash animation bar */
-.hash-bar{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-s);
-  padding:12px 20px;margin-top:16px;overflow:hidden;position:relative}
-.hash-scroll{display:flex;gap:20px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tx-dim);
-  animation:hashScroll 30s linear infinite;white-space:nowrap;width:max-content}
-
-/* ═══ DASHBOARD ═══ */
-.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-.dash-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:22px;
-  transition:all .3s}
-.dash-card:hover{border-color:var(--border-a);transform:translateY(-2px)}
-.dash-card .dc-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:14px}
-.dash-card .dc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;
-  justify-content:center;font-size:18px}
-.dash-card .dc-delta{font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px}
-.delta-up{background:rgba(16,185,129,0.1);color:var(--emerald)}
-.delta-down{background:rgba(239,68,68,0.1);color:var(--ruby)}
-.dash-card .dc-val{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;margin-bottom:4px}
-.dash-card .dc-lbl{font-size:11px;color:var(--tx-muted);letter-spacing:.5px}
-
-/* Charts area */
-.charts-row{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:20px}
-.chart-panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);padding:24px}
-.chart-panel h4{font-size:14px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.chart-svg{width:100%;height:220px}
-
-/* Bar chart */
-.bar-group{display:flex;align-items:flex-end;justify-content:space-around;height:180px;padding:0 10px}
-.bar-col{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
-.bar-fill{width:32px;border-radius:4px 4px 0 0;transition:height .8s cubic-bezier(0.34,1.56,0.64,1);
-  position:relative;cursor:pointer}
-.bar-fill:hover{opacity:0.85;transform:scaleX(1.1)}
-.bar-fill .tooltip{position:absolute;top:-28px;left:50%;transform:translateX(-50%);
-  background:var(--bg-deep);border:1px solid var(--border);padding:3px 8px;border-radius:4px;
-  font-size:9px;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;color:var(--tx-light)}
-.bar-fill:hover .tooltip{opacity:1}
-.bar-label{font-size:10px;color:var(--tx-dim);font-weight:600}
-
-/* Donut chart */
-.donut-wrap{display:flex;align-items:center;justify-content:center;gap:24px}
-.donut-svg{width:160px;height:160px}
-.donut-legend{display:flex;flex-direction:column;gap:10px}
-.legend-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx-light)}
-.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
-
-/* ═══ COMPLIANCE ═══ */
-.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
-.comp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);padding:28px;
-  transition:all .4s;position:relative;overflow:hidden}
-.comp-card:hover{border-color:var(--border-a);transform:translateY(-4px)}
-.comp-card::after{content:'✓';position:absolute;top:16px;right:16px;width:28px;height:28px;
-  border-radius:50%;background:rgba(16,185,129,0.1);color:var(--emerald);display:flex;
-  align-items:center;justify-content:center;font-size:14px;font-weight:700}
-.comp-card h4{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.comp-card p{font-size:12.5px;color:var(--tx-muted);line-height:1.7}
-.comp-badge{display:inline-block;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;
-  background:rgba(16,185,129,0.08);color:var(--emerald);text-transform:uppercase;letter-spacing:1px;margin-top:12px}
-
-/* ═══ ARCHITECTURE ═══ */
-.arch-visual{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);
-  padding:40px;margin-top:40px;overflow:hidden}
-.arch-layers{display:flex;flex-direction:column;gap:16px}
-.arch-layer{display:flex;align-items:center;gap:16px;padding:18px 24px;border-radius:var(--r-m);
-  border:1px solid var(--border);transition:all .3s}
-.arch-layer:hover{border-color:var(--border-a);background:var(--bg-card-h)}
-.arch-layer-badge{min-width:120px;font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:1.5px;padding:6px 14px;border-radius:6px;text-align:center}
-.arch-layer-content{flex:1;display:flex;gap:12px;flex-wrap:wrap}
-.arch-chip{background:var(--bg-deep);border:1px solid var(--border);border-radius:6px;
-  padding:8px 14px;font-size:11px;font-weight:600;color:var(--tx-light);transition:all .3s}
-.arch-chip:hover{border-color:var(--emerald);color:var(--emerald)}
-.arch-arrow{text-align:center;color:var(--tx-dim);font-size:20px;padding:4px 0}
-
-/* ═══ TOKENOMICS ═══ */
-.token-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:40px}
-.token-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);padding:28px}
-.token-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;
-  display:flex;align-items:center;gap:10px}
-.token-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);
-  font-size:13px}
-.token-row:last-child{border:none}
-.token-row .tk-l{color:var(--tx-muted);font-weight:500}
-.token-row .tk-v{font-weight:700;font-family:'JetBrains Mono',monospace;font-size:12px}
-.token-row .tk-v.emerald{color:var(--emerald)}
-.token-row .tk-v.gold{color:var(--gold)}
-
-/* ═══ TX LOG ═══ */
-.tx-log{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-l);
-  overflow:hidden;margin-top:20px}
-.tx-log-hdr{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;
-  justify-content:space-between;align-items:center}
-.tx-log-hdr h4{font-size:14px;font-weight:700}
-.tx-table{width:100%;border-collapse:collapse}
-.tx-table th{padding:12px 20px;text-align:left;font-size:10px;font-weight:700;
-  text-transform:uppercase;letter-spacing:1px;color:var(--tx-dim);border-bottom:1px solid var(--border)}
-.tx-table td{padding:12px 20px;font-size:12px;border-bottom:1px solid var(--border)}
-.tx-table tr:hover td{background:rgba(16,185,129,0.02)}
-.tx-hash{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--sapphire)}
-.tx-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
-.tx-status.confirmed{background:rgba(16,185,129,0.1);color:var(--emerald)}
-.tx-status.pending{background:rgba(245,158,11,0.1);color:var(--gold)}
-
-/* ═══ ROADMAP ═══ */
-.roadmap-track{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;position:relative}
-.roadmap-track::before{content:'';position:absolute;top:30px;left:10%;right:10%;height:2px;
-  background:linear-gradient(90deg,var(--emerald),var(--sapphire),var(--gold),var(--amethyst))}
-.rm-node{text-align:center;position:relative;padding-top:50px}
-.rm-dot{width:20px;height:20px;border-radius:50%;position:absolute;top:21px;left:50%;
-  transform:translateX(-50%);border:3px solid var(--bg-void);z-index:2}
-.rm-node:nth-child(1) .rm-dot{background:var(--emerald)}
-.rm-node:nth-child(2) .rm-dot{background:var(--sapphire)}
-.rm-node:nth-child(3) .rm-dot{background:var(--gold)}
-.rm-node:nth-child(4) .rm-dot{background:var(--amethyst)}
-.rm-node h4{font-size:14px;font-weight:700;margin-bottom:8px}
-.rm-node p{font-size:11.5px;color:var(--tx-muted);line-height:1.6}
-.rm-phase{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--tx-dim);margin-bottom:6px}
-
-/* ═══ REVENUE MODEL ═══ */
-.rev-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
-.rev-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:22px;
-  text-align:center;transition:all .4s}
-.rev-card:hover{border-color:var(--border-a);transform:translateY(-4px)}
-.rev-card .rv-icon{font-size:28px;margin-bottom:12px}
-.rev-card h5{font-size:13px;font-weight:700;margin-bottom:6px}
-.rev-card .rv-pct{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--emerald);margin:8px 0}
-.rev-card p{font-size:11px;color:var(--tx-muted);line-height:1.5}
-
-/* ═══ FOOTER ═══ */
-footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;position:relative;z-index:1}
-footer .f-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;margin-bottom:8px}
-footer .f-logo em{font-style:normal;color:var(--emerald)}
-footer .f-tag{font-size:12px;color:var(--tx-muted);margin-bottom:16px}
-footer .f-copy{font-size:11px;color:var(--tx-dim)}
-footer .f-badges{display:flex;justify-content:center;gap:12px;margin:16px 0}
-footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px;
-  background:rgba(16,185,129,0.06);color:var(--emerald);border:1px solid var(--border-a);
-  letter-spacing:1px;text-transform:uppercase}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:1024px){
-  .hero .container{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .pillars-grid{grid-template-columns:repeat(2,1fr)}
-  .dash-grid{grid-template-columns:repeat(2,1fr)}
-  .sc-demo-wrap{grid-template-columns:1fr}
-  .charts-row{grid-template-columns:1fr}
-  .compliance-grid{grid-template-columns:1fr}
-  .token-grid{grid-template-columns:1fr}
-  .roadmap-track{grid-template-columns:repeat(2,1fr)}
-  .roadmap-track::before{display:none}
-  .rev-cards{grid-template-columns:repeat(2,1fr)}
-  .arch-layer{flex-direction:column;align-items:flex-start}
-  nav{display:none}
-}
-@media(max-width:640px){
-  .hero h1{font-size:2.2rem}
-  .hero-stats{grid-template-columns:1fr}
-  .pillars-grid{grid-template-columns:1fr}
-  .dash-grid{grid-template-columns:1fr}
-  .rev-cards{grid-template-columns:1fr}
-  .container{padding:0 20px}
-}
-
-/* Tab system */
-.tab-bar{display:flex;gap:4px;background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--r-m);padding:4px;margin-bottom:28px;overflow-x:auto}
-.tab-btn{padding:10px 20px;border:none;background:none;color:var(--tx-muted);font-size:12px;
-  font-weight:600;cursor:pointer;border-radius:8px;transition:all .3s;white-space:nowrap;
-  font-family:inherit;letter-spacing:.3px}
-.tab-btn.active{background:var(--emerald);color:white}
-.tab-btn:hover:not(.active){color:var(--tx-white);background:rgba(255,255,255,0.04)}
-.tab-content{display:none}
-.tab-content.active{display:block;animation:fadeUp .5s ease}
-
-/* Impact meters */
-.impact-meters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
-.meter-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:20px}
-.meter-card h5{font-size:12px;font-weight:600;color:var(--tx-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
-.meter-bar-bg{width:100%;height:8px;background:var(--bg-deep);border-radius:4px;overflow:hidden;margin-bottom:8px}
-.meter-bar-fill{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(0.34,1.56,0.64,1)}
-.meter-val{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800}
-</style>
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -426,7 +47,7 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
     <a href="#arsitektur">Arsitektur</a>
     <a href="#compliance">Compliance</a>
   </nav>
-  <button class="btn-connect" onclick="connectWallet()">🔗 Connect Wallet</button>
+  <button class="btn-connect" onclick="connectWallet()">Connect Wallet</button>
 </header>
 
 <!-- ═══════ HERO ═══════ -->
@@ -441,22 +62,26 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
       <p class="hero-desc anim-up d2">
         Platform DeFi syariah pertama yang men-tokenisasi seluruh jenis wakaf — aset tetap, uang, melalui uang, dan usaha produktif — dengan transparansi 100% di blockchain Polygon. Membuka akses wakaf untuk 238 juta muslim Indonesia.
       </p>
-      <div class="hero-stats anim-up d3">
+      <div class="hero-cta anim-up d3">
+        <button class="btn-primary" onclick="scrollToSection('smart-contract')">Mulai Berwakaf</button>
+        <button class="btn-outline" onclick="scrollToSection('pilar')">Pelajari Lebih Lanjut</button>
+      </div>
+      <div class="hero-stats anim-up d4">
         <div class="hero-stat">
-          <div class="num" id="stat-potensi">Rp 2.000T</div>
+          <div class="num">Rp 2.000T</div>
           <div class="lbl">Potensi Wakaf/Tahun</div>
         </div>
         <div class="hero-stat">
-          <div class="num" id="stat-muslim">238 Juta</div>
+          <div class="num">238 Juta</div>
           <div class="lbl">Muslim Indonesia</div>
         </div>
         <div class="hero-stat">
-          <div class="num" id="stat-min">Rp 10.000</div>
+          <div class="num">Rp 10.000</div>
           <div class="lbl">Minimum Kontribusi</div>
         </div>
       </div>
     </div>
-    <div class="hero-right anim-up d4">
+    <div class="hero-right anim-up d5">
       <div class="hero-visual">
         <div class="chain-viz" id="heroChain"></div>
       </div>
@@ -467,36 +92,36 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 <!-- ═══════ 4 PILAR ═══════ -->
 <section class="section-pad" id="pilar">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Empat Pilar Tokenisasi</div>
       <h2>Ekosistem Wakaf Komprehensif</h2>
       <p class="sub">Platform pertama yang mencakup seluruh jenis wakaf dalam satu ekosistem blockchain terintegrasi</p>
     </div>
     <div class="pillars-grid">
-      <div class="pillar-card anim-up" onclick="showPillarDetail(1)">
+      <div class="pillar-card reveal">
         <div class="pillar-num">01</div>
-        <div class="pillar-icon">🏛️</div>
+        <div class="pillar-icon">&#x1F3DB;&#xFE0F;</div>
         <h3>Wakaf Aset Tetap</h3>
         <p>Tokenisasi tanah, bangunan, dan properti wakaf existing menjadi fractional token. ROI dari sewa/pengelolaan didistribusikan ke penerima manfaat secara otomatis.</p>
         <span class="pillar-tag">ERC-1400 Token</span>
       </div>
-      <div class="pillar-card anim-up d1" onclick="showPillarDetail(2)">
+      <div class="pillar-card reveal">
         <div class="pillar-num">02</div>
-        <div class="pillar-icon">💰</div>
+        <div class="pillar-icon">&#x1F4B0;</div>
         <h3>Wakaf Uang</h3>
         <p>Wakif berwakaf uang yang diinvestasikan pada instrumen syariah (Sukuk, Deposito Syariah). Pokok dijaga, hasil investasi untuk penerima manfaat.</p>
         <span class="pillar-tag">Sukuk Backed</span>
       </div>
-      <div class="pillar-card anim-up d2" onclick="showPillarDetail(3)">
+      <div class="pillar-card reveal">
         <div class="pillar-num">03</div>
-        <div class="pillar-icon">🤝</div>
+        <div class="pillar-icon">&#x1F91D;</div>
         <h3>Wakaf Melalui Uang</h3>
         <p>Crowdfunding wakaf untuk pembelian aset baru. Dana terkumpul, beli aset, diwakafkan, kemudian di-tokenisasi untuk transparansi penuh.</p>
         <span class="pillar-tag">Crowdfunding</span>
       </div>
-      <div class="pillar-card anim-up d3" onclick="showPillarDetail(4)">
+      <div class="pillar-card reveal">
         <div class="pillar-num">04</div>
-        <div class="pillar-icon">🌾</div>
+        <div class="pillar-icon">&#x1F33E;</div>
         <h3>Wakaf Usaha Produktif</h3>
         <p>Wakaf dalam bentuk modal usaha produktif — pertanian, peternakan, retail. Keuntungan dibagikan ke penerima manfaat melalui smart contract.</p>
         <span class="pillar-tag">Profit Sharing</span>
@@ -506,19 +131,19 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 </section>
 
 <!-- ═══════ SMART CONTRACT DEMO ═══════ -->
-<section class="section-pad" id="smart-contract" style="background:rgba(16,185,129,0.01)">
+<section class="section-pad section-tinted" id="smart-contract">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Smart Contract Simulator</div>
       <h2>Interaksi Langsung dengan Blockchain</h2>
       <p class="sub">Demo minting token wakaf dan distribusi ROI melalui smart contract Solidity</p>
     </div>
     <div class="sc-demo-wrap">
       <!-- Code Panel -->
-      <div class="sc-panel">
+      <div class="sc-panel reveal">
         <div class="sc-panel-hdr">
-          <h3>📜 WaqfToken.sol</h3>
-          <span class="status status-live">● Deployed</span>
+          <h3>&#x1F4DC; WaqfToken.sol</h3>
+          <span class="status status-live">&#x25CF; Deployed</span>
         </div>
         <div class="sc-code">
 <span class="cm">// SPDX-License-Identifier: MIT</span>
@@ -588,13 +213,13 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
         </div>
       </div>
       <!-- Interaction Panel -->
-      <div class="sc-panel">
+      <div class="sc-panel reveal">
         <div class="sc-panel-hdr">
-          <h3>⚡ Live Interaction</h3>
-          <span class="status status-live">● Polygon Testnet</span>
+          <h3>&#x26A1; Live Interaction</h3>
+          <span class="status status-live">&#x25CF; Polygon Testnet</span>
         </div>
         <div class="sc-interact">
-          <h4 style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--emerald)">🪙 Mint Wakaf Token</h4>
+          <h4 style="font-size:13px;font-weight:700;margin-bottom:16px;color:var(--emerald)">&#x1FA99; Mint Wakaf Token</h4>
           <div class="sc-form-row">
             <div class="sc-field">
               <label>Nama Wakif</label>
@@ -603,10 +228,10 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
             <div class="sc-field">
               <label>Pilar Wakaf</label>
               <select id="pilarSelect">
-                <option value="1">🏛️ Aset Tetap</option>
-                <option value="2" selected>💰 Wakaf Uang</option>
-                <option value="3">🤝 Melalui Uang</option>
-                <option value="4">🌾 Usaha Produktif</option>
+                <option value="1">&#x1F3DB;&#xFE0F; Aset Tetap</option>
+                <option value="2" selected>&#x1F4B0; Wakaf Uang</option>
+                <option value="3">&#x1F91D; Melalui Uang</option>
+                <option value="4">&#x1F33E; Usaha Produktif</option>
               </select>
             </div>
           </div>
@@ -625,16 +250,16 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
               </select>
             </div>
           </div>
-          <div style="display:flex;gap:12px;margin-top:8px">
-            <button class="btn-mint" onclick="mintToken()">🪙 Mint Token</button>
-            <button class="btn-dist" onclick="distributeROI()">📊 Distribute ROI</button>
+          <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+            <button class="btn-mint" onclick="mintToken()">&#x1FA99; Mint Token</button>
+            <button class="btn-dist" onclick="distributeROI()">&#x1F4CA; Distribute ROI</button>
           </div>
 
           <div id="mintResult" style="margin-top:20px"></div>
 
           <!-- Live Transaction Feed -->
           <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:20px">
-            <h4 style="font-size:12px;font-weight:700;color:var(--tx-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">📡 Live Transaction Feed</h4>
+            <h4 style="font-size:12px;font-weight:700;color:var(--tx-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">&#x1F4E1; Live Transaction Feed</h4>
             <div id="txFeed" style="max-height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:8px"></div>
           </div>
         </div>
@@ -646,12 +271,12 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 <!-- ═══════ BLOCKCHAIN EXPLORER ═══════ -->
 <section class="section-pad" id="explorer">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Blockchain Explorer</div>
       <h2>WaqFi Chain — Immutable Audit Trail</h2>
       <p class="sub">Setiap transaksi wakaf tercatat permanen dan transparan di blockchain</p>
     </div>
-    <div class="explorer-wrap">
+    <div class="explorer-wrap reveal-scale">
       <div class="chain-display" id="chainDisplay"></div>
       <div class="hash-bar">
         <div class="hash-scroll" id="hashScroll"></div>
@@ -659,9 +284,9 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
     </div>
 
     <!-- Transaction Log Table -->
-    <div class="tx-log">
+    <div class="tx-log reveal">
       <div class="tx-log-hdr">
-        <h4>📋 Transaction History</h4>
+        <h4>&#x1F4CB; Transaction History</h4>
         <span style="font-size:11px;color:var(--tx-muted)" id="txCount">0 transactions</span>
       </div>
       <div style="overflow-x:auto">
@@ -685,9 +310,9 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 </section>
 
 <!-- ═══════ DASHBOARD ═══════ -->
-<section class="section-pad" id="dashboard" style="background:rgba(16,185,129,0.01)">
+<section class="section-pad section-tinted" id="dashboard">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Analytics Dashboard</div>
       <h2>Real-Time Wakaf Intelligence</h2>
       <p class="sub">Dashboard monitoring untuk Nazhir, BWI, dan stakeholder</p>
@@ -695,33 +320,33 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 
     <!-- KPI Cards -->
     <div class="dash-grid">
-      <div class="dash-card">
+      <div class="dash-card reveal">
         <div class="dc-top">
-          <div class="dc-icon" style="background:rgba(16,185,129,0.1);color:var(--emerald)">💎</div>
+          <div class="dc-icon" style="background:rgba(16,185,129,0.1);color:var(--emerald)">&#x1F48E;</div>
           <span class="dc-delta delta-up">+24.5%</span>
         </div>
         <div class="dc-val" id="kpi-total" style="color:var(--emerald)">Rp 0</div>
         <div class="dc-lbl">Total Wakaf Terhimpun</div>
       </div>
-      <div class="dash-card">
+      <div class="dash-card reveal">
         <div class="dc-top">
-          <div class="dc-icon" style="background:rgba(59,130,246,0.1);color:var(--sapphire)">👥</div>
+          <div class="dc-icon" style="background:rgba(59,130,246,0.1);color:var(--sapphire)">&#x1F465;</div>
           <span class="dc-delta delta-up">+18.2%</span>
         </div>
         <div class="dc-val" id="kpi-wakif" style="color:var(--sapphire)">0</div>
         <div class="dc-lbl">Total Wakif Terdaftar</div>
       </div>
-      <div class="dash-card">
+      <div class="dash-card reveal">
         <div class="dc-top">
-          <div class="dc-icon" style="background:rgba(245,158,11,0.1);color:var(--gold)">🪙</div>
+          <div class="dc-icon" style="background:rgba(245,158,11,0.1);color:var(--gold)">&#x1FA99;</div>
           <span class="dc-delta delta-up">+31.7%</span>
         </div>
         <div class="dc-val" id="kpi-tokens" style="color:var(--gold)">0</div>
         <div class="dc-lbl">Token Ter-mint</div>
       </div>
-      <div class="dash-card">
+      <div class="dash-card reveal">
         <div class="dc-top">
-          <div class="dc-icon" style="background:rgba(139,92,246,0.1);color:var(--amethyst)">📊</div>
+          <div class="dc-icon" style="background:rgba(139,92,246,0.1);color:var(--amethyst)">&#x1F4CA;</div>
           <span class="dc-delta delta-up">+12.8%</span>
         </div>
         <div class="dc-val" id="kpi-roi" style="color:var(--amethyst)">0%</div>
@@ -731,12 +356,12 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 
     <!-- Charts -->
     <div class="charts-row">
-      <div class="chart-panel">
-        <h4>📈 Penghimpunan Wakaf per Bulan (Miliar Rp)</h4>
+      <div class="chart-panel reveal">
+        <h4>&#x1F4C8; Penghimpunan Wakaf per Bulan (Miliar Rp)</h4>
         <div class="bar-group" id="barChart"></div>
       </div>
-      <div class="chart-panel">
-        <h4>🎯 Distribusi per Pilar</h4>
+      <div class="chart-panel reveal">
+        <h4>&#x1F3AF; Distribusi per Pilar</h4>
         <div class="donut-wrap">
           <svg class="donut-svg" viewBox="0 0 160 160" id="donutChart"></svg>
           <div class="donut-legend" id="donutLegend"></div>
@@ -746,20 +371,20 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 
     <!-- Impact Meters -->
     <div class="impact-meters">
-      <div class="meter-card">
-        <h5>🏛️ Produktivitas Aset Wakaf</h5>
+      <div class="meter-card reveal">
+        <h5>&#x1F3DB;&#xFE0F; Produktivitas Aset Wakaf</h5>
         <div class="meter-bar-bg"><div class="meter-bar-fill" style="width:0%;background:var(--emerald)" id="meter1"></div></div>
         <div class="meter-val" style="color:var(--emerald)">62%</div>
         <span style="font-size:10px;color:var(--tx-dim)">Target: 60% — Sebelumnya: 20%</span>
       </div>
-      <div class="meter-card">
-        <h5>👥 Inklusi Wakif Baru</h5>
+      <div class="meter-card reveal">
+        <h5>&#x1F465; Inklusi Wakif Baru</h5>
         <div class="meter-bar-bg"><div class="meter-bar-fill" style="width:0%;background:var(--sapphire)" id="meter2"></div></div>
         <div class="meter-val" style="color:var(--sapphire)">8,542</div>
         <span style="font-size:10px;color:var(--tx-dim)">Target: 10.000 wakif baru</span>
       </div>
-      <div class="meter-card">
-        <h5>🤲 Penerima Manfaat</h5>
+      <div class="meter-card reveal">
+        <h5>&#x1F932; Penerima Manfaat</h5>
         <div class="meter-bar-bg"><div class="meter-bar-fill" style="width:0%;background:var(--gold)" id="meter3"></div></div>
         <div class="meter-val" style="color:var(--gold)">12,350</div>
         <span style="font-size:10px;color:var(--tx-dim)">Dhuafa, yatim, pesantren</span>
@@ -771,76 +396,76 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 <!-- ═══════ ARCHITECTURE ═══════ -->
 <section class="section-pad" id="arsitektur">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Technical Architecture</div>
       <h2>System Design — Polygon L2</h2>
       <p class="sub">Arsitektur microservices dengan blockchain layer untuk transparansi dan skalabilitas</p>
     </div>
-    <div class="arch-visual">
+    <div class="arch-visual reveal-scale">
       <div class="arch-layers">
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(16,185,129,0.1);color:var(--emerald)">Frontend</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">📱 React Native (Mobile)</div>
-            <div class="arch-chip">🖥️ Next.js + TypeScript</div>
-            <div class="arch-chip">🎨 Wakif Dashboard</div>
-            <div class="arch-chip">📊 Nazhir Portal</div>
-            <div class="arch-chip">🏛️ BWI Monitor</div>
+            <div class="arch-chip">&#x1F4F1; React Native (Mobile)</div>
+            <div class="arch-chip">&#x1F5A5;&#xFE0F; Next.js + TypeScript</div>
+            <div class="arch-chip">&#x1F3A8; Wakif Dashboard</div>
+            <div class="arch-chip">&#x1F4CA; Nazhir Portal</div>
+            <div class="arch-chip">&#x1F3DB;&#xFE0F; BWI Monitor</div>
           </div>
         </div>
-        <div class="arch-arrow">▼</div>
+        <div class="arch-arrow">&#x25BC;</div>
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(59,130,246,0.1);color:var(--sapphire)">API Gateway</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">🔐 JWT Auth + RBAC</div>
-            <div class="arch-chip">🛡️ WAF + Rate Limiting</div>
-            <div class="arch-chip">📡 REST + WebSocket</div>
-            <div class="arch-chip">🔄 Load Balancer</div>
+            <div class="arch-chip">&#x1F510; JWT Auth + RBAC</div>
+            <div class="arch-chip">&#x1F6E1;&#xFE0F; WAF + Rate Limiting</div>
+            <div class="arch-chip">&#x1F4E1; REST + WebSocket</div>
+            <div class="arch-chip">&#x1F504; Load Balancer</div>
           </div>
         </div>
-        <div class="arch-arrow">▼</div>
+        <div class="arch-arrow">&#x25BC;</div>
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(245,158,11,0.1);color:var(--gold)">Microservices</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">👤 User Service (Node.js)</div>
-            <div class="arch-chip">🪙 Token Service (Go)</div>
-            <div class="arch-chip">📋 Waqf Service (Node.js)</div>
-            <div class="arch-chip">💳 Payment Service</div>
-            <div class="arch-chip">📊 Analytics Service</div>
-            <div class="arch-chip">🔍 KYC Service (VIDA)</div>
+            <div class="arch-chip">&#x1F464; User Service (Node.js)</div>
+            <div class="arch-chip">&#x1FA99; Token Service (Go)</div>
+            <div class="arch-chip">&#x1F4CB; Waqf Service (Node.js)</div>
+            <div class="arch-chip">&#x1F4B3; Payment Service</div>
+            <div class="arch-chip">&#x1F4CA; Analytics Service</div>
+            <div class="arch-chip">&#x1F50D; KYC Service (VIDA)</div>
           </div>
         </div>
-        <div class="arch-arrow">▼</div>
+        <div class="arch-arrow">&#x25BC;</div>
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(139,92,246,0.1);color:var(--amethyst)">Blockchain</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">⛓️ Polygon (Ethereum L2)</div>
-            <div class="arch-chip">📜 WaqfFactory.sol</div>
-            <div class="arch-chip">🪙 WaqfToken (ERC-1400)</div>
-            <div class="arch-chip">✅ ComplianceModule.sol</div>
-            <div class="arch-chip">💰 ROIDistributor.sol</div>
+            <div class="arch-chip">&#x26D3;&#xFE0F; Polygon (Ethereum L2)</div>
+            <div class="arch-chip">&#x1F4DC; WaqfFactory.sol</div>
+            <div class="arch-chip">&#x1FA99; WaqfToken (ERC-1400)</div>
+            <div class="arch-chip">&#x2705; ComplianceModule.sol</div>
+            <div class="arch-chip">&#x1F4B0; ROIDistributor.sol</div>
           </div>
         </div>
-        <div class="arch-arrow">▼</div>
+        <div class="arch-arrow">&#x25BC;</div>
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(20,184,166,0.1);color:var(--teal)">Data Layer</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">🐘 PostgreSQL</div>
-            <div class="arch-chip">⚡ Redis Cache</div>
-            <div class="arch-chip">🐇 RabbitMQ</div>
-            <div class="arch-chip">📦 IPFS (Documents)</div>
-            <div class="arch-chip">☁️ AWS/GCP + K8s</div>
+            <div class="arch-chip">&#x1F418; PostgreSQL</div>
+            <div class="arch-chip">&#x26A1; Redis Cache</div>
+            <div class="arch-chip">&#x1F407; RabbitMQ</div>
+            <div class="arch-chip">&#x1F4E6; IPFS (Documents)</div>
+            <div class="arch-chip">&#x2601;&#xFE0F; AWS/GCP + K8s</div>
           </div>
         </div>
-        <div class="arch-arrow">▼</div>
+        <div class="arch-arrow">&#x25BC;</div>
         <div class="arch-layer">
           <div class="arch-layer-badge" style="background:rgba(239,68,68,0.1);color:var(--ruby)">Integrasi</div>
           <div class="arch-layer-content">
-            <div class="arch-chip">💳 Xendit / Midtrans</div>
-            <div class="arch-chip">🔐 VIDA / PrivyID</div>
-            <div class="arch-chip">🏦 BSI / Muamalat API</div>
-            <div class="arch-chip">📡 BWI Reporting</div>
-            <div class="arch-chip">📱 QRIS Payment</div>
+            <div class="arch-chip">&#x1F4B3; Xendit / Midtrans</div>
+            <div class="arch-chip">&#x1F510; VIDA / PrivyID</div>
+            <div class="arch-chip">&#x1F3E6; BSI / Muamalat API</div>
+            <div class="arch-chip">&#x1F4E1; BWI Reporting</div>
+            <div class="arch-chip">&#x1F4F1; QRIS Payment</div>
           </div>
         </div>
       </div>
@@ -849,41 +474,41 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 </section>
 
 <!-- ═══════ COMPLIANCE ═══════ -->
-<section class="section-pad" id="compliance" style="background:rgba(16,185,129,0.01)">
+<section class="section-pad section-tinted" id="compliance">
   <div class="container">
-    <div class="sec-hdr">
-      <div class="overline">Sharia & Regulatory Compliance</div>
+    <div class="sec-hdr reveal">
+      <div class="overline">Sharia &amp; Regulatory Compliance</div>
       <h2>Framework Kepatuhan Syariah</h2>
       <p class="sub">Syariah-first design dengan standar internasional dan regulasi nasional</p>
     </div>
     <div class="compliance-grid">
-      <div class="comp-card">
-        <h4>📖 AAOIFI Standard No. 60</h4>
+      <div class="comp-card reveal">
+        <h4>&#x1F4D6; AAOIFI Standard No. 60</h4>
         <p>Kepatuhan penuh terhadap Sharia Standard No. 60 tentang Waqf dari Accounting and Auditing Organization for Islamic Financial Institutions.</p>
         <div class="comp-badge">International Standard</div>
       </div>
-      <div class="comp-card">
-        <h4>⚖️ Fatwa DSN-MUI No. 132</h4>
+      <div class="comp-card reveal">
+        <h4>&#x2696;&#xFE0F; Fatwa DSN-MUI No. 132</h4>
         <p>Implementasi sesuai Fatwa DSN-MUI No. 132/DSN-MUI/IX/2018 tentang Wakaf Uang dan standar fatwa terkait lainnya.</p>
         <div class="comp-badge">Fatwa Compliance</div>
       </div>
-      <div class="comp-card">
-        <h4>🏛️ UU No. 41/2004</h4>
+      <div class="comp-card reveal">
+        <h4>&#x1F3DB;&#xFE0F; UU No. 41/2004</h4>
         <p>Selaras dengan Undang-Undang Nomor 41 Tahun 2004 tentang Wakaf dan PP No. 25/2020 tentang Penyelenggaraan Perwakafan.</p>
         <div class="comp-badge">Regulasi Nasional</div>
       </div>
-      <div class="comp-card">
-        <h4>🏢 BWI Registration</h4>
+      <div class="comp-card reveal">
+        <h4>&#x1F3E2; BWI Registration</h4>
         <p>Integrasi langsung dengan Badan Wakaf Indonesia untuk registrasi nazhir, pelaporan otomatis, dan pengawasan real-time.</p>
         <div class="comp-badge">Regulator Ready</div>
       </div>
-      <div class="comp-card">
-        <h4>🔐 KYC/AML Compliance</h4>
+      <div class="comp-card reveal">
+        <h4>&#x1F510; KYC/AML Compliance</h4>
         <p>Verifikasi identitas melalui e-KYC (VIDA/PrivyID) dengan integrasi Dukcapil untuk validasi NIK dan screening AML.</p>
         <div class="comp-badge">Security Layer</div>
       </div>
-      <div class="comp-card">
-        <h4>🛡️ Waqf Core Principles</h4>
+      <div class="comp-card reveal">
+        <h4>&#x1F6E1;&#xFE0F; Waqf Core Principles</h4>
         <p>Mengikuti Waqf Core Principles yang diterbitkan oleh Islamic Development Bank (IsDB) untuk standar pengelolaan wakaf.</p>
         <div class="comp-badge">IsDB Standard</div>
       </div>
@@ -894,14 +519,14 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 <!-- ═══════ TOKENOMICS ═══════ -->
 <section class="section-pad" id="tokenomics">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Token Economics</div>
       <h2>WaqFi Tokenomics — ERC-1400</h2>
       <p class="sub">Security token standard dengan built-in compliance untuk regulatory oversight</p>
     </div>
     <div class="token-grid">
-      <div class="token-card">
-        <h4>🪙 Token Specification</h4>
+      <div class="token-card reveal">
+        <h4>&#x1FA99; Token Specification</h4>
         <div class="token-row"><span class="tk-l">Token Name</span><span class="tk-v">WaqFi Token (WAQF)</span></div>
         <div class="token-row"><span class="tk-l">Standard</span><span class="tk-v emerald">ERC-1400</span></div>
         <div class="token-row"><span class="tk-l">Network</span><span class="tk-v">Polygon (Ethereum L2)</span></div>
@@ -910,8 +535,8 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
         <div class="token-row"><span class="tk-l">Confirmation</span><span class="tk-v">~2 detik</span></div>
         <div class="token-row"><span class="tk-l">Audit Library</span><span class="tk-v">OpenZeppelin</span></div>
       </div>
-      <div class="token-card">
-        <h4>📊 Revenue Model</h4>
+      <div class="token-card reveal">
+        <h4>&#x1F4CA; Revenue Model</h4>
         <div class="token-row"><span class="tk-l">Platform Fee</span><span class="tk-v gold">1-2% dari ROI</span></div>
         <div class="token-row"><span class="tk-l">Nazhir Subscription</span><span class="tk-v">Rp 500K-2M/bln</span></div>
         <div class="token-row"><span class="tk-l">Transaction Fee</span><span class="tk-v">Rp 1K-5K/tx</span></div>
@@ -925,37 +550,17 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 </section>
 
 <!-- ═══════ ROADMAP ═══════ -->
-<section class="section-pad" id="roadmap" style="background:rgba(16,185,129,0.01)">
+<section class="section-pad section-tinted" id="roadmap">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Implementation Roadmap</div>
       <h2>Tahapan Pengembangan</h2>
     </div>
     <div class="roadmap-track">
-      <div class="rm-node">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Fase 1</div>
-        <h4>Foundation</h4>
-        <p>Bulan 1-2: Setup dev environment, develop smart contract core (WaqfFactory, WaqfToken), security audit, backend microservices, integrasi payment & KYC</p>
-      </div>
-      <div class="rm-node">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Fase 2</div>
-        <h4>MVP Launch</h4>
-        <p>Bulan 3-4: Mobile app Wakif, Nazhir dashboard, testing & QA, deploy ke Polygon testnet, UAT dengan partner nazhir</p>
-      </div>
-      <div class="rm-node">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Fase 3</div>
-        <h4>Pilot</h4>
-        <p>Bulan 5-6: Onboarding 5 nazhir, launch 3 proyek perdana, deploy mainnet Polygon, monitoring & optimization</p>
-      </div>
-      <div class="rm-node">
-        <div class="rm-dot"></div>
-        <div class="rm-phase">Fase 4</div>
-        <h4>Scale</h4>
-        <p>Bulan 7-12: Pilar 3 & 4, 50+ nazhir, integrasi lebih banyak LKS, Rp 10M+ terhimpun, marketing campaign</p>
-      </div>
+      <div class="rm-node reveal"><div class="rm-dot"></div><div class="rm-phase">Fase 1</div><h4>Foundation</h4><p>Bulan 1-2: Setup dev environment, develop smart contract core (WaqfFactory, WaqfToken), security audit, backend microservices, integrasi payment &amp; KYC</p></div>
+      <div class="rm-node reveal"><div class="rm-dot"></div><div class="rm-phase">Fase 2</div><h4>MVP Launch</h4><p>Bulan 3-4: Mobile app Wakif, Nazhir dashboard, testing &amp; QA, deploy ke Polygon testnet, UAT dengan partner nazhir</p></div>
+      <div class="rm-node reveal"><div class="rm-dot"></div><div class="rm-phase">Fase 3</div><h4>Pilot</h4><p>Bulan 5-6: Onboarding 5 nazhir, launch 3 proyek perdana, deploy mainnet Polygon, monitoring &amp; optimization</p></div>
+      <div class="rm-node reveal"><div class="rm-dot"></div><div class="rm-phase">Fase 4</div><h4>Scale</h4><p>Bulan 7-12: Pilar 3 &amp; 4, 50+ nazhir, integrasi lebih banyak LKS, Rp 10M+ terhimpun, marketing campaign</p></div>
     </div>
   </div>
 </section>
@@ -963,84 +568,59 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
 <!-- ═══════ REVENUE ═══════ -->
 <section class="section-pad">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">Business Model</div>
       <h2>Revenue Streams</h2>
       <p class="sub">Model bisnis berkelanjutan yang tidak membebani wakif</p>
     </div>
     <div class="rev-cards">
-      <div class="rev-card">
-        <div class="rv-icon">💎</div>
-        <h5>Platform Fee</h5>
-        <div class="rv-pct">1-2%</div>
-        <p>Dari ROI yang dihasilkan, bukan dari dana wakif</p>
-      </div>
-      <div class="rev-card">
-        <div class="rv-icon">📊</div>
-        <h5>Nazhir SaaS</h5>
-        <div class="rv-pct">Rp 2M</div>
-        <p>Subscription bulanan dashboard premium & analytics</p>
-      </div>
-      <div class="rev-card">
-        <div class="rv-icon">⚡</div>
-        <h5>Tx Fee</h5>
-        <div class="rv-pct">Rp 5K</div>
-        <p>Biaya admin per transaksi pencairan/distribusi</p>
-      </div>
-      <div class="rev-card">
-        <div class="rv-icon">🏷️</div>
-        <h5>White Label</h5>
-        <div class="rv-pct">Custom</div>
-        <p>Lisensi platform untuk lembaga wakaf besar</p>
-      </div>
-      <div class="rev-card">
-        <div class="rv-icon">📈</div>
-        <h5>Data Insight</h5>
-        <div class="rv-pct">B2B</div>
-        <p>Layanan analytics untuk peneliti & institusi</p>
-      </div>
+      <div class="rev-card reveal"><div class="rv-icon">&#x1F48E;</div><h5>Platform Fee</h5><div class="rv-pct">1-2%</div><p>Dari ROI yang dihasilkan, bukan dari dana wakif</p></div>
+      <div class="rev-card reveal"><div class="rv-icon">&#x1F4CA;</div><h5>Nazhir SaaS</h5><div class="rv-pct">Rp 2M</div><p>Subscription bulanan dashboard premium &amp; analytics</p></div>
+      <div class="rev-card reveal"><div class="rv-icon">&#x26A1;</div><h5>Tx Fee</h5><div class="rv-pct">Rp 5K</div><p>Biaya admin per transaksi pencairan/distribusi</p></div>
+      <div class="rev-card reveal"><div class="rv-icon">&#x1F3F7;&#xFE0F;</div><h5>White Label</h5><div class="rv-pct">Custom</div><p>Lisensi platform untuk lembaga wakaf besar</p></div>
+      <div class="rev-card reveal"><div class="rv-icon">&#x1F4C8;</div><h5>Data Insight</h5><div class="rv-pct">B2B</div><p>Layanan analytics untuk peneliti &amp; institusi</p></div>
     </div>
   </div>
 </section>
 
 <!-- ═══════ TEAM ═══════ -->
-<section class="section-pad" style="background:rgba(16,185,129,0.01)">
+<section class="section-pad section-tinted">
   <div class="container">
-    <div class="sec-hdr">
+    <div class="sec-hdr reveal">
       <div class="overline">WaqFi Team</div>
       <h2>Tim Pengembang</h2>
       <p class="sub">Profesional dengan keahlian blockchain, keuangan syariah, dan pengembangan produk digital</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:24px;text-align:center">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--emerald),var(--sapphire));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">👨‍🏫</div>
-        <div style="font-weight:700;font-size:13px">Dr. Yaser Taufik S.</div>
-        <div style="font-size:11px;color:var(--emerald);font-weight:600;margin-top:4px">Ketua Tim</div>
-        <div style="font-size:10px;color:var(--tx-muted);margin-top:6px">Universitas Tazkia</div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--emerald),var(--sapphire))">&#x1F468;&#x200D;&#x1F3EB;</div>
+        <div class="team-name">Dr. Yaser Taufik S.</div>
+        <div class="team-role" style="color:var(--emerald)">Ketua Tim</div>
+        <div class="team-affil">Universitas Tazkia</div>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:24px;text-align:center">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--emerald));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">👨‍💻</div>
-        <div style="font-weight:700;font-size:13px">MS. Hadianto, SE, Ak, MM</div>
-        <div style="font-size:11px;color:var(--gold);font-weight:600;margin-top:4px">Tech & AI Lead</div>
-        <div style="font-size:10px;color:var(--tx-muted);margin-top:6px">github.com/mshadianto</div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--gold),var(--emerald))">&#x1F468;&#x200D;&#x1F4BB;</div>
+        <div class="team-name">MS. Hadianto, SE, Ak, MM</div>
+        <div class="team-role" style="color:var(--gold)">Tech &amp; AI Lead</div>
+        <div class="team-affil">github.com/mshadianto</div>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:24px;text-align:center">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--sapphire),var(--amethyst));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">⚖️</div>
-        <div style="font-weight:700;font-size:13px">Asnan Purba, LC, MHI</div>
-        <div style="font-size:11px;color:var(--sapphire);font-weight:600;margin-top:4px">Sharia Compliance</div>
-        <div style="font-size:10px;color:var(--tx-muted);margin-top:6px">Islamic Law Expert</div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--sapphire),var(--amethyst))">&#x2696;&#xFE0F;</div>
+        <div class="team-name">Asnan Purba, LC, MHI</div>
+        <div class="team-role" style="color:var(--sapphire)">Sharia Compliance</div>
+        <div class="team-affil">Islamic Law Expert</div>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:24px;text-align:center">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--amethyst),var(--ruby));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">🔬</div>
-        <div style="font-weight:700;font-size:13px">Ronal Rulindo, PhD</div>
-        <div style="font-size:11px;color:var(--amethyst);font-weight:600;margin-top:4px">Research Lead</div>
-        <div style="font-size:10px;color:var(--tx-muted);margin-top:6px">Academic Research</div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--amethyst),var(--ruby))">&#x1F52C;</div>
+        <div class="team-name">Ronal Rulindo, PhD</div>
+        <div class="team-role" style="color:var(--amethyst)">Research Lead</div>
+        <div class="team-affil">Academic Research</div>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);padding:24px;text-align:center">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--sapphire));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">🛠️</div>
-        <div style="font-weight:700;font-size:13px">M. Ichsan Junaedi</div>
-        <div style="font-size:11px;color:var(--teal);font-weight:600;margin-top:4px">Dev Engineer</div>
-        <div style="font-size:10px;color:var(--tx-muted);margin-top:6px">github.com/IchsanJunaedi</div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--teal),var(--sapphire))">&#x1F6E0;&#xFE0F;</div>
+        <div class="team-name">M. Ichsan Junaedi</div>
+        <div class="team-role" style="color:var(--teal)">Dev Engineer</div>
+        <div class="team-affil">github.com/IchsanJunaedi</div>
       </div>
     </div>
   </div>
@@ -1057,528 +637,11 @@ footer .f-badge{font-size:9px;font-weight:700;padding:4px 12px;border-radius:4px
     <span class="f-badge">DSN-MUI</span>
     <span class="f-badge">BWI Ready</span>
   </div>
-  <div class="f-copy">© 2026 WaqFi Team — Hackathon DIGDAYA 2026 | Universitas Tazkia</div>
+  <div class="f-copy">&copy; 2026 WaqFi Team — Hackathon DIGDAYA 2026 | Universitas Tazkia</div>
 </footer>
 
-<script>
-/*═══════════════════════════════════════════════════════════════
-  WaqFi POC — Blockchain Simulation Engine
-═══════════════════════════════════════════════════════════════*/
+<!-- Modular JavaScript (ES Modules) -->
+<script type="module" src="js/app.js"></script>
 
-// ── State ──
-const state = {
-  blocks: [],
-  transactions: [],
-  totalWaqf: 0,
-  totalWakif: 0,
-  totalTokens: 0,
-  blockHeight: 0,
-  walletConnected: false,
-  walletAddress: ''
-};
-
-// ── Utility Functions ──
-function generateHash() {
-  const chars = '0123456789abcdef';
-  let hash = '0x';
-  for (let i = 0; i < 64; i++) hash += chars[Math.floor(Math.random() * 16)];
-  return hash;
-}
-
-function generateAddress() {
-  const chars = '0123456789abcdef';
-  let addr = '0x';
-  for (let i = 0; i < 40; i++) addr += chars[Math.floor(Math.random() * 16)];
-  return addr;
-}
-
-function shortHash(h) { return h.slice(0, 10) + '...' + h.slice(-6); }
-function shortAddr(a) { return a.slice(0, 8) + '...' + a.slice(-4); }
-
-function formatRupiah(num) {
-  if (num >= 1e12) return 'Rp ' + (num / 1e12).toFixed(1) + 'T';
-  if (num >= 1e9) return 'Rp ' + (num / 1e9).toFixed(1) + 'M';
-  if (num >= 1e6) return 'Rp ' + (num / 1e6).toFixed(1) + 'Jt';
-  return 'Rp ' + num.toLocaleString('id-ID');
-}
-
-function timeAgo() {
-  const s = Math.floor(Math.random() * 30) + 1;
-  return s + 's ago';
-}
-
-const pilarNames = ['', 'Aset Tetap', 'Wakaf Uang', 'Melalui Uang', 'Usaha Produktif'];
-const pilarColors = ['', '#10B981', '#3B82F6', '#F59E0B', '#8B5CF6'];
-const projectNames = [
-  'Masjid Al-Ikhlas Jakarta', 'Sukuk Wakaf BSI Series A',
-  'Pesantren Digital Bogor', 'Kebun Produktif Cianjur',
-  'RS Wakaf Surabaya', 'Ruko Wakaf Bandung',
-  'Deposito Syariah Wakaf', 'Sawah Produktif Karawang'
-];
-const wakifNames = [
-  'Ahmad Fauzi', 'Siti Aminah', 'Budi Santoso', 'Fatimah Zahra',
-  'Rizki Ramadhan', 'Nur Halimah', 'Irfan Hakim', 'Dewi Kartini',
-  'Hasan Abdullah', 'Aisyah Putri'
-];
-
-// ── Blockchain Engine ──
-function createGenesisBlock() {
-  const block = {
-    number: 0,
-    hash: generateHash(),
-    prevHash: '0x' + '0'.repeat(64),
-    timestamp: Date.now(),
-    type: 'genesis',
-    data: { message: 'WaqFi Genesis — Bismillah' },
-    txCount: 0,
-    gasUsed: '0'
-  };
-  state.blocks.push(block);
-  state.blockHeight = 0;
-}
-
-function mineBlock(txType, txData) {
-  state.blockHeight++;
-  const prevBlock = state.blocks[state.blocks.length - 1];
-  const block = {
-    number: state.blockHeight,
-    hash: generateHash(),
-    prevHash: prevBlock.hash,
-    timestamp: Date.now(),
-    type: txType,
-    data: txData,
-    txCount: 1,
-    gasUsed: (Math.random() * 50000 + 21000).toFixed(0)
-  };
-  state.blocks.push(block);
-
-  const tx = {
-    hash: generateHash(),
-    block: state.blockHeight,
-    from: txData.from || generateAddress(),
-    to: txData.to || '0xWaqfContract',
-    type: txType,
-    amount: txData.amount || 0,
-    status: 'confirmed',
-    timestamp: new Date().toLocaleTimeString('id-ID'),
-    pilar: txData.pilar || 0,
-    project: txData.project || ''
-  };
-  state.transactions.push(tx);
-  return { block, tx };
-}
-
-// ── Wallet Connection ──
-function connectWallet() {
-  if (state.walletConnected) return;
-  const btn = document.querySelector('.btn-connect');
-  btn.textContent = '⏳ Connecting...';
-  btn.disabled = true;
-
-  setTimeout(() => {
-    state.walletConnected = true;
-    state.walletAddress = generateAddress();
-    btn.textContent = '🟢 ' + shortAddr(state.walletAddress);
-    btn.style.background = 'rgba(16,185,129,0.15)';
-    btn.style.border = '1px solid rgba(16,185,129,0.3)';
-    btn.disabled = false;
-    addTxFeed('🔗 Wallet connected: ' + shortAddr(state.walletAddress), 'var(--emerald)');
-  }, 1200);
-}
-
-// ── Mint Token ──
-function mintToken() {
-  const name = document.getElementById('wakifName').value || 'Anonymous';
-  const pilar = parseInt(document.getElementById('pilarSelect').value);
-  const amount = parseInt(document.getElementById('waqfAmount').value);
-  const project = document.getElementById('projectSelect').value;
-
-  if (amount < 10000) {
-    showMintResult('❌ Minimum wakaf Rp 10.000', 'var(--ruby)');
-    return;
-  }
-
-  const btn = document.querySelector('.btn-mint');
-  btn.disabled = true;
-  btn.textContent = '⏳ Mining...';
-
-  addTxFeed('🔍 Verifying KYC for ' + name + '...', 'var(--sapphire)');
-
-  setTimeout(() => {
-    addTxFeed('✅ KYC verified — Sharia compliance check passed', 'var(--emerald)');
-
-    setTimeout(() => {
-      const tokenCount = Math.floor(amount / 10000);
-      const { block, tx } = mineBlock('mint', {
-        from: state.walletAddress || generateAddress(),
-        to: '0xWaqfToken',
-        amount: amount,
-        pilar: pilar,
-        project: project,
-        wakif: name,
-        tokens: tokenCount
-      });
-
-      state.totalWaqf += amount;
-      state.totalWakif++;
-      state.totalTokens += tokenCount;
-
-      showMintResult(
-        `<div style="background:var(--bg-deep);border:1px solid var(--border-a);border-radius:8px;padding:16px">
-          <div style="color:var(--emerald);font-weight:700;font-size:14px;margin-bottom:10px">✅ Token Minted Successfully!</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px">
-            <span style="color:var(--tx-dim)">Wakif:</span><span style="font-weight:600">${name}</span>
-            <span style="color:var(--tx-dim)">Pilar:</span><span style="font-weight:600">${pilarNames[pilar]}</span>
-            <span style="color:var(--tx-dim)">Amount:</span><span style="color:var(--emerald);font-weight:600">${formatRupiah(amount)}</span>
-            <span style="color:var(--tx-dim)">Tokens:</span><span style="color:var(--gold);font-weight:600">${tokenCount} WAQF</span>
-            <span style="color:var(--tx-dim)">Block:</span><span style="font-family:'JetBrains Mono';font-size:10px">#${block.number}</span>
-            <span style="color:var(--tx-dim)">Tx Hash:</span><span style="font-family:'JetBrains Mono';font-size:10px;color:var(--sapphire)">${shortHash(tx.hash)}</span>
-            <span style="color:var(--tx-dim)">Gas Used:</span><span style="font-family:'JetBrains Mono';font-size:10px">${block.gasUsed} gwei</span>
-            <span style="color:var(--tx-dim)">Project:</span><span style="font-weight:600">${project}</span>
-          </div>
-        </div>`, 'var(--emerald)'
-      );
-
-      addTxFeed(`🪙 Minted ${tokenCount} WAQF → ${name} | Block #${block.number}`, 'var(--gold)');
-
-      btn.disabled = false;
-      btn.textContent = '🪙 Mint Token';
-      updateDashboard();
-      renderChain();
-      renderTxTable();
-    }, 800);
-  }, 600);
-}
-
-// ── Distribute ROI ──
-function distributeROI() {
-  if (state.totalTokens === 0) {
-    addTxFeed('❌ No tokens minted yet — mint first!', 'var(--ruby)');
-    return;
-  }
-
-  const roiPercent = (Math.random() * 5 + 3).toFixed(2);
-  const totalROI = Math.floor(state.totalWaqf * parseFloat(roiPercent) / 100);
-  const beneficiaries = Math.floor(Math.random() * 50) + 10;
-
-  const { block, tx } = mineBlock('distribution', {
-    from: '0xROIDistributor',
-    to: 'Multi-beneficiary',
-    amount: totalROI,
-    pilar: 0,
-    project: 'ROI Distribution Round #' + Math.floor(Math.random() * 100)
-  });
-
-  addTxFeed(`📊 ROI Distribution: ${formatRupiah(totalROI)} → ${beneficiaries} beneficiaries (${roiPercent}%)`, 'var(--gold)');
-
-  showMintResult(
-    `<div style="background:var(--bg-deep);border:1px solid rgba(245,158,11,0.2);border-radius:8px;padding:16px">
-      <div style="color:var(--gold);font-weight:700;font-size:14px;margin-bottom:10px">📊 ROI Distributed!</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px">
-        <span style="color:var(--tx-dim)">Total ROI:</span><span style="color:var(--gold);font-weight:600">${formatRupiah(totalROI)}</span>
-        <span style="color:var(--tx-dim)">ROI Rate:</span><span style="font-weight:600">${roiPercent}%</span>
-        <span style="color:var(--tx-dim)">Beneficiaries:</span><span style="font-weight:600">${beneficiaries} orang</span>
-        <span style="color:var(--tx-dim)">Block:</span><span style="font-family:'JetBrains Mono';font-size:10px">#${block.number}</span>
-        <span style="color:var(--tx-dim)">Method:</span><span style="font-weight:600">Smart Contract Auto</span>
-        <span style="color:var(--tx-dim)">Tx Hash:</span><span style="font-family:'JetBrains Mono';font-size:10px;color:var(--sapphire)">${shortHash(tx.hash)}</span>
-      </div>
-    </div>`, 'var(--gold)'
-  );
-
-  renderChain();
-  renderTxTable();
-}
-
-function showMintResult(html, color) {
-  document.getElementById('mintResult').innerHTML = html;
-}
-
-function addTxFeed(msg, color) {
-  const feed = document.getElementById('txFeed');
-  const el = document.createElement('div');
-  el.style.cssText = `font-size:11px;padding:8px 12px;background:var(--bg-deep);border-radius:6px;border-left:3px solid ${color};animation:fadeUp .3s ease`;
-  el.innerHTML = `<span style="color:var(--tx-dim);font-size:9px;margin-right:8px">${new Date().toLocaleTimeString('id-ID')}</span>${msg}`;
-  feed.prepend(el);
-  if (feed.children.length > 15) feed.lastChild.remove();
-}
-
-// ── Render Chain ──
-function renderChain() {
-  const container = document.getElementById('chainDisplay');
-  container.innerHTML = '';
-
-  const blocksToShow = state.blocks.slice(-8);
-  blocksToShow.forEach((b, i) => {
-    if (i > 0) {
-      const conn = document.createElement('div');
-      conn.className = 'cb-connector';
-      conn.textContent = '→';
-      container.appendChild(conn);
-    }
-
-    const el = document.createElement('div');
-    el.className = 'chain-block' + (b.type === 'genesis' ? ' genesis' : '');
-    el.style.animationDelay = (i * 0.1) + 's';
-
-    const typeClass = b.type === 'genesis' ? 'gen' : b.type === 'mint' ? 'mint' : 'dist';
-    const typeLabel = b.type === 'genesis' ? 'Genesis' : b.type === 'mint' ? 'Mint' : 'ROI Dist';
-
-    el.innerHTML = `
-      <div class="cb-header">
-        <span class="cb-num">#${b.number}</span>
-        <span class="cb-type ${typeClass}">${typeLabel}</span>
-      </div>
-      <div class="cb-row"><span class="cb-label">Hash</span><span class="cb-val">${shortHash(b.hash)}</span></div>
-      <div class="cb-row"><span class="cb-label">Prev</span><span class="cb-val">${shortHash(b.prevHash)}</span></div>
-      <div class="cb-row"><span class="cb-label">Tx</span><span class="cb-val">${b.txCount}</span></div>
-      <div class="cb-row"><span class="cb-label">Gas</span><span class="cb-val">${b.gasUsed} gwei</span></div>
-    `;
-    container.appendChild(el);
-  });
-
-  // Hash scroll
-  const hashScroll = document.getElementById('hashScroll');
-  let hashStr = '';
-  state.blocks.forEach(b => { hashStr += b.hash + '  ●  '; });
-  hashScroll.innerHTML = hashStr + hashStr;
-
-  // Tx count
-  document.getElementById('txCount').textContent = state.transactions.length + ' transactions';
-}
-
-// ── Render Transaction Table ──
-function renderTxTable() {
-  const tbody = document.getElementById('txTableBody');
-  const txs = state.transactions.slice(-10).reverse();
-  tbody.innerHTML = txs.map(tx => `
-    <tr>
-      <td><span class="tx-hash">${shortHash(tx.hash)}</span></td>
-      <td>#${tx.block}</td>
-      <td style="font-family:'JetBrains Mono';font-size:10px">${shortAddr(tx.from)}</td>
-      <td><span class="tx-status ${tx.type === 'mint' ? 'confirmed' : 'pending'}">${tx.type === 'mint' ? '🪙 Mint' : '📊 Dist'}</span></td>
-      <td style="font-weight:600;color:${tx.type === 'mint' ? 'var(--emerald)' : 'var(--gold)'}">${formatRupiah(tx.amount)}</td>
-      <td><span class="tx-status confirmed">✓ Confirmed</span></td>
-      <td style="color:var(--tx-dim)">${tx.timestamp}</td>
-    </tr>
-  `).join('');
-}
-
-// ── Update Dashboard ──
-function updateDashboard() {
-  animateValue('kpi-total', formatRupiah(state.totalWaqf));
-  animateValue('kpi-wakif', state.totalWakif.toLocaleString('id-ID'));
-  animateValue('kpi-tokens', state.totalTokens.toLocaleString('id-ID') + ' WAQF');
-  animateValue('kpi-roi', (Math.random() * 3 + 5).toFixed(1) + '%');
-}
-
-function animateValue(id, val) {
-  const el = document.getElementById(id);
-  el.style.animation = 'none';
-  el.offsetHeight;
-  el.style.animation = 'countUp .4s ease both';
-  el.textContent = val;
-}
-
-// ── Hero Chain ──
-function renderHeroChain() {
-  const container = document.getElementById('heroChain');
-  const blocks = [
-    { h: 'Block #1024', d: 'WaqfToken.mint() — 50 WAQF', hash: generateHash() },
-    { h: 'Block #1025', d: 'ROIDistributor.distribute()', hash: generateHash() },
-    { h: 'Block #1026', d: 'WaqfFactory.createProject()', hash: generateHash() },
-    { h: 'Block #1027', d: 'ComplianceModule.verify()', hash: generateHash() }
-  ];
-
-  blocks.forEach((b, i) => {
-    if (i > 0) container.innerHTML += '<div class="chain-arrow">⬇</div>';
-    container.innerHTML += `
-      <div class="block-row" style="animation-delay:${i * 0.15}s">
-        <div class="block-item${i === 0 ? ' active' : ''}">
-          <div class="bh">${b.h}</div>
-          <div class="bd">${b.d}</div>
-          <div class="bd" style="margin-top:4px;font-size:8.5px;color:var(--tx-dim)">${shortHash(b.hash)}</div>
-        </div>
-      </div>`;
-  });
-}
-
-// ── Bar Chart ──
-function renderBarChart() {
-  const data = [
-    { label: 'Jan', value: 1.2, color: 'var(--emerald)' },
-    { label: 'Feb', value: 2.1, color: 'var(--emerald)' },
-    { label: 'Mar', value: 1.8, color: 'var(--emerald)' },
-    { label: 'Apr', value: 3.5, color: 'var(--emerald-l)' },
-    { label: 'May', value: 4.2, color: 'var(--emerald-l)' },
-    { label: 'Jun', value: 5.8, color: 'var(--sapphire)' },
-    { label: 'Jul', value: 7.1, color: 'var(--sapphire)' },
-    { label: 'Aug', value: 8.5, color: 'var(--gold)' },
-    { label: 'Sep', value: 9.2, color: 'var(--gold)' },
-    { label: 'Oct', value: 11.3, color: 'var(--gold)' },
-    { label: 'Nov', value: 13.8, color: 'var(--amethyst)' },
-    { label: 'Dec', value: 16.5, color: 'var(--amethyst)' }
-  ];
-  const max = Math.max(...data.map(d => d.value));
-  const container = document.getElementById('barChart');
-  container.innerHTML = data.map(d => `
-    <div class="bar-col">
-      <div class="bar-fill" style="height:0%;background:${d.color}" data-h="${(d.value / max * 100)}">
-        <span class="tooltip">${d.value}M</span>
-      </div>
-      <span class="bar-label">${d.label}</span>
-    </div>
-  `).join('');
-
-  setTimeout(() => {
-    document.querySelectorAll('.bar-fill').forEach(b => {
-      b.style.height = b.dataset.h + '%';
-    });
-  }, 500);
-}
-
-// ── Donut Chart ──
-function renderDonutChart() {
-  const data = [
-    { label: 'Aset Tetap', value: 35, color: '#10B981' },
-    { label: 'Wakaf Uang', value: 30, color: '#3B82F6' },
-    { label: 'Melalui Uang', value: 20, color: '#F59E0B' },
-    { label: 'Usaha Produktif', value: 15, color: '#8B5CF6' }
-  ];
-
-  const svg = document.getElementById('donutChart');
-  const cx = 80, cy = 80, r = 60, strokeW = 18;
-  const circumference = 2 * Math.PI * r;
-  let offset = 0;
-
-  svg.innerHTML = data.map(d => {
-    const dashLen = (d.value / 100) * circumference;
-    const dashGap = circumference - dashLen;
-    const circle = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${d.color}" stroke-width="${strokeW}"
-      stroke-dasharray="${dashLen} ${dashGap}" stroke-dashoffset="${-offset}" stroke-linecap="round"
-      style="transition:all 1s ease;transform:rotate(-90deg);transform-origin:${cx}px ${cy}px"/>`;
-    offset += dashLen;
-    return circle;
-  }).join('') + `<text x="${cx}" y="${cy-4}" text-anchor="middle" fill="white" font-size="18" font-weight="800" font-family="'Playfair Display',serif">100%</text>
-  <text x="${cx}" y="${cy+12}" text-anchor="middle" fill="#64748B" font-size="8" font-weight="600" font-family="'Plus Jakarta Sans',sans-serif">ALLOCATED</text>`;
-
-  const legend = document.getElementById('donutLegend');
-  legend.innerHTML = data.map(d => `
-    <div class="legend-item">
-      <div class="legend-dot" style="background:${d.color}"></div>
-      <span>${d.label} (${d.value}%)</span>
-    </div>
-  `).join('');
-}
-
-// ── Impact Meters ──
-function animateMeters() {
-  setTimeout(() => { document.getElementById('meter1').style.width = '62%'; }, 300);
-  setTimeout(() => { document.getElementById('meter2').style.width = '85%'; }, 500);
-  setTimeout(() => { document.getElementById('meter3').style.width = '74%'; }, 700);
-}
-
-// ── Nav ──
-function scrollToSection(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-}
-document.querySelectorAll('nav a').forEach(a => {
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
-    this.classList.add('active');
-    const target = this.getAttribute('href').slice(1);
-    scrollToSection(target);
-  });
-});
-
-// ── Seed Demo Data ──
-function seedDemoData() {
-  // Generate initial transactions
-  const seedTxs = [
-    { name: 'Siti Aminah', pilar: 2, amount: 1000000, project: 'Sukuk Wakaf BSI Series A' },
-    { name: 'Budi Santoso', pilar: 1, amount: 5000000, project: 'Masjid Al-Ikhlas Jakarta' },
-    { name: 'Fatimah Zahra', pilar: 3, amount: 250000, project: 'Pesantren Digital Bogor' },
-    { name: 'Rizki Ramadhan', pilar: 4, amount: 2000000, project: 'Kebun Produktif Cianjur' },
-    { name: 'Nur Halimah', pilar: 2, amount: 500000, project: 'Deposito Syariah Wakaf' }
-  ];
-
-  seedTxs.forEach(tx => {
-    const tokens = Math.floor(tx.amount / 10000);
-    mineBlock('mint', {
-      from: generateAddress(),
-      to: '0xWaqfToken',
-      amount: tx.amount,
-      pilar: tx.pilar,
-      project: tx.project,
-      wakif: tx.name,
-      tokens: tokens
-    });
-    state.totalWaqf += tx.amount;
-    state.totalWakif++;
-    state.totalTokens += tokens;
-  });
-
-  // Add one ROI distribution
-  mineBlock('distribution', {
-    from: '0xROIDistributor',
-    to: 'Multi-beneficiary',
-    amount: 420000,
-    pilar: 0,
-    project: 'ROI Distribution Round #1'
-  });
-}
-
-// ── Auto-generate periodic transactions ──
-function autoGenerate() {
-  setInterval(() => {
-    const name = wakifNames[Math.floor(Math.random() * wakifNames.length)];
-    const pilar = Math.floor(Math.random() * 4) + 1;
-    const amount = [100000, 250000, 500000, 1000000, 2500000][Math.floor(Math.random() * 5)];
-    const project = projectNames[Math.floor(Math.random() * projectNames.length)];
-    const tokens = Math.floor(amount / 10000);
-
-    mineBlock('mint', {
-      from: generateAddress(),
-      to: '0xWaqfToken',
-      amount, pilar, project, wakif: name, tokens
-    });
-
-    state.totalWaqf += amount;
-    state.totalWakif++;
-    state.totalTokens += tokens;
-
-    addTxFeed(`🪙 Auto: ${name} → ${tokens} WAQF (${pilarNames[pilar]})`, pilarColors[pilar]);
-    updateDashboard();
-    renderChain();
-    renderTxTable();
-  }, 8000);
-}
-
-// ── Initialize ──
-function init() {
-  createGenesisBlock();
-  seedDemoData();
-  renderHeroChain();
-  renderChain();
-  renderTxTable();
-  renderBarChart();
-  renderDonutChart();
-  updateDashboard();
-  animateMeters();
-  autoGenerate();
-}
-
-document.addEventListener('DOMContentLoaded', init);
-
-// ── Intersection Observer for animations ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.animationPlayState = 'running';
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>

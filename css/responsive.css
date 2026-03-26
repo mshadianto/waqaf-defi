@@ -1,0 +1,92 @@
+/*═══════════════════════════════════════════════════════════════
+  WaqFi — Responsive Breakpoints
+═══════════════════════════════════════════════════════════════*/
+
+/* ── Tablet (1024px) ── */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero h1 { font-size: 2.8rem; }
+
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .dash-grid { grid-template-columns: repeat(2, 1fr); }
+  .sc-demo-wrap { grid-template-columns: 1fr; }
+  .charts-row { grid-template-columns: 1fr; }
+  .compliance-grid { grid-template-columns: repeat(2, 1fr); }
+  .token-grid { grid-template-columns: 1fr; }
+  .roadmap-track { grid-template-columns: repeat(2, 1fr); }
+  .roadmap-track::before { display: none; }
+  .rev-cards { grid-template-columns: repeat(3, 1fr); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .arch-layer { flex-direction: column; align-items: flex-start; }
+  .arch-layer-badge { min-width: unset; }
+
+  nav { display: none; }
+
+  .topbar { padding: 14px 20px; }
+}
+
+/* ── Mobile Large (768px) ── */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+
+  .hero h1 { font-size: 2.4rem; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .hero-stat .num { font-size: 1.4rem; }
+  .hero-stat { padding: 14px; }
+
+  .pillars-grid { gap: 14px; }
+  .pillar-card { padding: 24px 18px; }
+
+  .sc-form-row { flex-direction: column; }
+
+  .compliance-grid { grid-template-columns: 1fr; }
+  .impact-meters { grid-template-columns: 1fr; }
+
+  .rev-cards { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .container { padding: 0 20px; }
+  .section-pad { padding: 64px 0; }
+
+  .toast { min-width: unset; max-width: calc(100vw - 48px); }
+  .toast-container { right: 12px; left: 12px; }
+}
+
+/* ── Mobile Small (640px) ── */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2rem; }
+  .hero-desc { font-size: 0.95rem; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline { width: 100%; text-align: center; }
+
+  .pillars-grid { grid-template-columns: 1fr; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .rev-cards { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .roadmap-track { grid-template-columns: 1fr; }
+
+  .sec-hdr h2 { font-size: 1.8rem; }
+
+  .container { padding: 0 16px; }
+
+  .btn-mint, .btn-dist { width: 100%; }
+
+  .arch-visual { padding: 20px; }
+  .arch-chip { font-size: 10px; padding: 6px 10px; }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hash-scroll { animation: none; }
+  html { scroll-behavior: auto; }
+}

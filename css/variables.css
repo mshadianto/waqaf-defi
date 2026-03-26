@@ -1,0 +1,101 @@
+/*═══════════════════════════════════════════════════════════════
+  WaqFi Design System — Design Tokens
+  Single source of truth for all visual properties
+═══════════════════════════════════════════════════════════════*/
+
+:root {
+  /* ── Surface Colors ── */
+  --bg-void:     #060A10;
+  --bg-deep:     #0B1120;
+  --bg-card:     #111B2E;
+  --bg-card-h:   #162240;
+  --bg-surface:  #1A2744;
+  --bg-elevated: #1E2D4A;
+
+  /* ── Text Colors ── */
+  --tx-white:  #F1F5F9;
+  --tx-light:  #CBD5E1;
+  --tx-muted:  #64748B;
+  --tx-dim:    #475569;
+
+  /* ── Brand Colors ── */
+  --emerald:   #10B981;
+  --emerald-l: #34D399;
+  --emerald-d: #059669;
+  --gold:      #F59E0B;
+  --gold-l:    #FBBF24;
+  --gold-d:    #D97706;
+  --sapphire:  #3B82F6;
+  --sapphire-l:#60A5FA;
+  --amethyst:  #8B5CF6;
+  --amethyst-l:#A78BFA;
+  --ruby:      #EF4444;
+  --teal:      #14B8A6;
+
+  /* ── Borders ── */
+  --border:    rgba(148,163,184,0.07);
+  --border-a:  rgba(16,185,129,0.2);
+  --border-h:  rgba(16,185,129,0.35);
+
+  /* ── Glass & Overlay ── */
+  --glass:     rgba(11,17,32,0.75);
+  --glass-h:   rgba(11,17,32,0.85);
+  --overlay:   rgba(6,10,16,0.6);
+
+  /* ── Glow Effects ── */
+  --glow-e:    0 0 40px rgba(16,185,129,0.15);
+  --glow-g:    0 0 40px rgba(245,158,11,0.1);
+  --glow-s:    0 0 40px rgba(59,130,246,0.1);
+  --glow-a:    0 0 40px rgba(139,92,246,0.1);
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.5);
+
+  /* ── Border Radius ── */
+  --r-xs: 4px;
+  --r-s:  6px;
+  --r-m:  10px;
+  --r-l:  16px;
+  --r-xl: 24px;
+  --r-full: 9999px;
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-arabic:  'Amiri', serif;
+
+  /* ── Spacing Scale ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  /* ── Transitions ── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --dur-fast:    150ms;
+  --dur-base:    300ms;
+  --dur-slow:    500ms;
+  --dur-slower:  700ms;
+
+  /* ── Z-Index Scale ── */
+  --z-base:    1;
+  --z-card:    10;
+  --z-sticky:  100;
+  --z-nav:     1000;
+  --z-modal:   2000;
+  --z-toast:   3000;
+}

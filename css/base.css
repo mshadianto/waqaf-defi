@@ -1,0 +1,102 @@
+/*═══════════════════════════════════════════════════════════════
+  WaqFi — Base Reset, Typography, Global Elements
+═══════════════════════════════════════════════════════════════*/
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--tx-white);
+  overflow-x: hidden;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(16,185,129,0.25);
+  color: var(--tx-white);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb {
+  background: var(--emerald);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--emerald-l); }
+
+/* ── Focus Visible ── */
+:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 2px;
+  border-radius: var(--r-xs);
+}
+
+/* ── Background Layers ── */
+.bg-mesh {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 900px 700px at 15% 15%, rgba(16,185,129,0.05), transparent),
+    radial-gradient(ellipse 700px 500px at 85% 75%, rgba(59,130,246,0.04), transparent),
+    radial-gradient(ellipse 500px 400px at 50% 50%, rgba(139,92,246,0.025), transparent);
+}
+
+.bg-pattern {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* ── Container ── */
+section { position: relative; z-index: var(--z-base); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 36px; }
+.section-pad { padding: var(--sp-24) 0; }
+.section-tinted { background: rgba(16,185,129,0.01); }
+
+/* ── Section Header ── */
+.sec-hdr { text-align: center; margin-bottom: var(--sp-12); }
+
+.sec-hdr .overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--emerald); margin-bottom: var(--sp-3);
+}
+
+.sec-hdr h2 {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 800;
+}
+
+.sec-hdr .sub {
+  font-size: 1rem; color: var(--tx-muted);
+  margin-top: var(--sp-3); max-width: 600px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* ── Typography Helpers ── */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
+.text-emerald { color: var(--emerald); }
+.text-gold    { color: var(--gold); }
+.text-sapphire{ color: var(--sapphire); }
+.text-amethyst{ color: var(--amethyst); }
+.text-muted   { color: var(--tx-muted); }
