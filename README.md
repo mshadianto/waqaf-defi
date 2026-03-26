@@ -13,6 +13,10 @@
   <img src="https://img.shields.io/badge/Status-Proof_of_Concept-8B5CF6?style=flat-square" alt="PoC">
 </p>
 
+<p align="center">
+  <a href="https://mshadianto.github.io/waqaf-defi/"><strong>&#x1F680; Live Demo</strong></a>
+</p>
+
 ---
 
 ## Tentang WaqFi
@@ -159,24 +163,64 @@ contract WaqfToken is ERC1400 {
 
 ## Demo PoC
 
-Saat ini WaqFi tersedia sebagai **interactive Proof of Concept** dalam satu file HTML (`waqfi-platform.html`). Demo ini mensimulasikan:
+WaqFi tersedia sebagai **interactive Proof of Concept** — modular static site dengan ES modules (tanpa build tool).
 
-- Koneksi wallet blockchain
+**Live demo:** [mshadianto.github.io/waqaf-defi](https://mshadianto.github.io/waqaf-defi/)
+
+Fitur demo:
+- Koneksi wallet blockchain (simulasi)
 - Minting token wakaf dengan verifikasi KYC
 - Distribusi ROI otomatis ke beneficiary
 - Blockchain explorer dengan immutable audit trail
 - Dashboard analytics real-time (KPI, chart, impact metrics)
-- Visualisasi 4 pilar tokenisasi
+- Toast notification system
+- Scroll-reveal animations
+- Responsive design (desktop, tablet, mobile)
 - Auto-generate transaksi periodik
 
-### Cara Menjalankan Demo
+### Cara Menjalankan Lokal
 
 ```bash
-# Cukup buka file HTML di browser
-open waqfi-platform.html
-
-# Atau gunakan live server
+# Gunakan local server (diperlukan untuk ES module imports)
 npx serve .
+
+# Atau Python
+python -m http.server 3000
+
+# Lalu buka http://localhost:3000
+```
+
+> **Catatan:** Buka langsung via `file://` tidak didukung karena browser memblokir ES module imports dari file system. Gunakan local server.
+
+### Struktur Project
+
+```
+waqaf-defi/
+├── index.html              ← Entry point (modular version)
+├── waqfi-platform.html     ← Original monolithic demo (legacy)
+├── css/
+│   ├── variables.css       ← Design tokens
+│   ├── base.css            ← Reset & global styles
+│   ├── animations.css      ← Keyframes & scroll-reveal
+│   ├── components.css      ← All UI components
+│   └── responsive.css      ← Breakpoints & a11y
+├── js/
+│   ├── app.js              ← Entry point & orchestrator
+│   ├── config.js           ← Constants & configuration
+│   ├── state.js            ← Reactive state manager (EventTarget)
+│   ├── blockchain.js       ← Block mining & tx engine
+│   ├── wallet.js           ← Wallet connection
+│   └── ui/
+│       ├── toast.js        ← Toast notifications
+│       ├── hero.js         ← Hero blockchain visual
+│       ├── explorer.js     ← Chain display & tx table
+│       ├── dashboard.js    ← KPI cards & impact meters
+│       ├── charts.js       ← Bar & donut charts
+│       ├── mint.js         ← Mint form & ROI distribution
+│       ├── scroll.js       ← Scroll effects & navigation
+│       └── txfeed.js       ← Live transaction feed
+├── README.md
+└── CLAUDE.md
 ```
 
 ---
@@ -200,6 +244,7 @@ npx serve .
 | Blockchain | Polygon (Ethereum L2), Solidity ^0.8.20, ERC-1400, OpenZeppelin |
 | Backend | Node.js, Go, PostgreSQL, Redis, RabbitMQ, IPFS |
 | Frontend | Next.js, TypeScript, React Native |
+| PoC Demo | Vanilla HTML/CSS/JS, ES Modules, EventTarget State |
 | Infra | AWS/GCP, Kubernetes, Docker |
 | Payment | Xendit, Midtrans, QRIS |
 | KYC | VIDA, PrivyID, Dukcapil |
