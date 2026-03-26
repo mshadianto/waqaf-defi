@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaqFi — Pilar 4: Wakaf Usaha Produktif</title>
+  <meta name="description" content="Wakaf modal usaha produktif — pertanian, peternakan, retail. Keuntungan dibagikan ke penerima manfaat melalui smart contract.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/pillar.css">
+  <style>
+    .perf-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 20px;
+    }
+    .perf-card {
+      background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: var(--r-m); padding: 16px; text-align: center;
+    }
+    .perf-card .perf-val {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;
+    }
+    .perf-card .perf-lbl {
+      font-size: 9px; color: var(--tx-muted); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .profit-dist {
+      display: flex; flex-direction: column; gap: 10px; margin-top: 16px;
+    }
+    .pd-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: var(--r-s);
+    }
+    .pd-bar-bg {
+      flex: 1; height: 8px; background: var(--bg-card); border-radius: 4px; overflow: hidden;
+    }
+    .pd-bar-fill { height: 100%; border-radius: 4px; }
+    .pd-label { min-width: 130px; font-size: 12px; font-weight: 600; }
+    .pd-pct { font-size: 12px; font-weight: 800; font-family: var(--font-display); min-width: 40px; text-align: right; }
+    .sector-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px;
+    }
+    .sector-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-m); padding: 20px; text-align: center;
+      transition: all var(--dur-base) var(--ease-out);
+    }
+    .sector-card:hover { border-color: var(--border-a); transform: translateY(-3px); }
+    .sector-icon { font-size: 36px; margin-bottom: 12px; }
+    .sector-card h5 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .sector-card p { font-size: 11px; color: var(--tx-muted); }
+    @media (max-width: 768px) {
+      .perf-grid, .sector-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .perf-grid, .sector-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-pattern"></div>
+
+<a href="../index.html" class="back-nav">&#x2190; Kembali ke WaqFi</a>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="pillar-hero">
+  <div class="container">
+    <div>
+      <div class="pillar-hero-badge" style="background:rgba(139,92,246,0.1);color:var(--amethyst);border:1px solid rgba(139,92,246,0.2)">
+        &#x1F33E; Pilar 4 — Usaha Produktif
+      </div>
+      <h1 class="anim-up">
+        Wakaf <span style="color:var(--amethyst)">Usaha</span><br>
+        <span style="color:var(--emerald)">Produktif</span>
+      </h1>
+      <p class="pillar-hero-desc anim-up d1">
+        Wakaf dalam bentuk modal usaha produktif — pertanian, peternakan, retail, dan manufaktur. Keuntungan usaha dibagikan ke penerima manfaat secara otomatis melalui smart contract dengan skema profit sharing syariah (Mudharabah).
+      </p>
+      <div class="pillar-hero-stats anim-up d2">
+        <div class="ph-stat">
+          <div class="val" style="color:var(--amethyst)">12</div>
+          <div class="lbl">Unit Usaha Aktif</div>
+        </div>
+        <div class="ph-stat">
+          <div class="val" style="color:var(--amethyst)">9.4%</div>
+          <div class="lbl">Avg Profit / Tahun</div>
+        </div>
+        <div class="ph-stat">
+          <div class="val" style="color:var(--amethyst)">850</div>
+          <div class="lbl">Penerima Manfaat</div>
+        </div>
+      </div>
+    </div>
+    <div class="anim-up d3">
+      <div class="pillar-summary">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--amethyst)"></div>
+        <h3>&#x1F4CA; Ringkasan Pilar</h3>
+        <div class="ps-row"><span class="ps-label">Jenis Usaha</span><span class="ps-value">Pertanian, Retail, Manufaktur</span></div>
+        <div class="ps-row"><span class="ps-label">Token Standard</span><span class="ps-value" style="color:var(--amethyst)">ERC-1400</span></div>
+        <div class="ps-row"><span class="ps-label">Min. Kontribusi</span><span class="ps-value" style="color:var(--amethyst)">Rp 10.000</span></div>
+        <div class="ps-row"><span class="ps-label">Skema Bagi Hasil</span><span class="ps-value">Mudharabah (Profit Sharing)</span></div>
+        <div class="ps-row"><span class="ps-label">Distribusi Profit</span><span class="ps-value">Otomatis via Smart Contract</span></div>
+        <div class="ps-row"><span class="ps-label">Usaha Aktif</span><span class="ps-value" style="color:var(--amethyst)">12 Unit Usaha</span></div>
+        <div class="ps-row"><span class="ps-label">Compliance</span><span class="ps-value">Fatwa DSN-MUI No. 132</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SEKTOR USAHA ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Sektor Usaha</div>
+      <h2>Bidang Usaha Produktif</h2>
+      <p class="sub">Wakaf modal usaha di berbagai sektor produktif yang memberikan dampak ekonomi langsung</p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-card reveal">
+        <div class="sector-icon">&#x1F33E;</div>
+        <h5>Pertanian</h5>
+        <p>Sawah, kebun, hortikultura</p>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-icon">&#x1F404;</div>
+        <h5>Peternakan</h5>
+        <p>Sapi, kambing, unggas</p>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-icon">&#x1F3EA;</div>
+        <h5>Retail</h5>
+        <p>Minimarket, toko, UMKM</p>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-icon">&#x1F3ED;</div>
+        <h5>Manufaktur</h5>
+        <p>Pengolahan, produksi, packaging</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROYEK AKTIF ═══════ -->
+<section class="section-pad section-tinted">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Proyek Tersedia</div>
+      <h2>Usaha Produktif Wakaf</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(139,92,246,0.15))">&#x1F33E;</div>
+        <div class="project-body">
+          <h4>Kebun Produktif Cianjur</h4>
+          <div class="loc">&#x1F4CD; Cianjur, Jawa Barat &middot; Pertanian Organik</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:82%;background:var(--amethyst)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--amethyst)">Rp 820Jt</span>
+              <span>Target: Rp 1M</span>
+            </div>
+          </div>
+          <div class="perf-grid">
+            <div class="perf-card"><div class="perf-val" style="color:var(--emerald)">12.3%</div><div class="perf-lbl">Profit/Thn</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--gold)">8 Ha</div><div class="perf-lbl">Luas Lahan</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--sapphire)">45</div><div class="perf-lbl">Pekerja</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--amethyst)">320</div><div class="perf-lbl">Penerima</div></div>
+          </div>
+          <div class="project-footer" style="margin-top:14px">
+            <div class="project-roi">
+              <span style="color:var(--tx-muted)">Profit</span>
+              <span class="roi-val" style="color:var(--amethyst)">12.3%</span>
+            </div>
+            <button class="btn-invest" style="background:var(--amethyst)">Investasi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(16,185,129,0.15))">&#x1F404;</div>
+        <div class="project-body">
+          <h4>Peternakan Wakaf Karawang</h4>
+          <div class="loc">&#x1F4CD; Karawang, Jawa Barat &middot; Sapi & Kambing</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:55%;background:var(--emerald)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--emerald)">Rp 825Jt</span>
+              <span>Target: Rp 1.5M</span>
+            </div>
+          </div>
+          <div class="perf-grid">
+            <div class="perf-card"><div class="perf-val" style="color:var(--emerald)">8.7%</div><div class="perf-lbl">Profit/Thn</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--gold)">120</div><div class="perf-lbl">Ekor</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--sapphire)">28</div><div class="perf-lbl">Pekerja</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--amethyst)">180</div><div class="perf-lbl">Penerima</div></div>
+          </div>
+          <div class="project-footer" style="margin-top:14px">
+            <div class="project-roi">
+              <span style="color:var(--tx-muted)">Profit</span>
+              <span class="roi-val" style="color:var(--emerald)">8.7%</span>
+            </div>
+            <button class="btn-invest" style="background:var(--emerald)">Investasi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(245,158,11,0.15))">&#x1F3EA;</div>
+        <div class="project-body">
+          <h4>Minimarket Wakaf Depok</h4>
+          <div class="loc">&#x1F4CD; Depok, Jawa Barat &middot; Retail Syariah</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:90%;background:var(--gold)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--gold)">Rp 450Jt</span>
+              <span>Target: Rp 500Jt</span>
+            </div>
+          </div>
+          <div class="perf-grid">
+            <div class="perf-card"><div class="perf-val" style="color:var(--emerald)">15.2%</div><div class="perf-lbl">Profit/Thn</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--gold)">3</div><div class="perf-lbl">Outlet</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--sapphire)">18</div><div class="perf-lbl">Pekerja</div></div>
+            <div class="perf-card"><div class="perf-val" style="color:var(--amethyst)">350</div><div class="perf-lbl">Penerima</div></div>
+          </div>
+          <div class="project-footer" style="margin-top:14px">
+            <div class="project-roi">
+              <span style="color:var(--tx-muted)">Profit</span>
+              <span class="roi-val" style="color:var(--gold)">15.2%</span>
+            </div>
+            <button class="btn-invest" style="background:var(--gold)">Investasi</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CARA KERJA ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Cara Kerja</div>
+      <h2>Alur Wakaf Usaha Produktif</h2>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--amethyst)">1</div>
+        <h4>Proposal Usaha</h4>
+        <p>Nazhir mengajukan proposal bisnis dengan studi kelayakan, proyeksi profit, dan rencana distribusi manfaat.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--amethyst)">2</div>
+        <h4>Wakif Berinvestasi</h4>
+        <p>Wakif memberikan modal usaha mulai Rp 10.000. Dana masuk smart contract dengan akad Mudharabah.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--amethyst)">3</div>
+        <h4>Usaha Berjalan</h4>
+        <p>Nazhir mengelola usaha. Laporan keuangan tercatat on-chain. Audit otomatis via smart contract.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--amethyst)">4</div>
+        <h4>Profit Sharing</h4>
+        <p>Keuntungan didistribusikan otomatis: penerima manfaat mendapat bagian terbesar, Nazhir mendapat fee pengelolaan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DISTRIBUSI PROFIT ═══════ -->
+<section class="section-pad section-tinted">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Skema Bagi Hasil</div>
+      <h2>Distribusi Profit Mudharabah</h2>
+      <p class="sub">Pembagian keuntungan usaha sesuai akad syariah yang transparan di blockchain</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-panel reveal">
+        <h3>&#x1F4B0; Alokasi Profit</h3>
+        <div class="profit-dist">
+          <div class="pd-row">
+            <span class="pd-label" style="color:var(--emerald)">Penerima Manfaat</span>
+            <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:60%;background:var(--emerald)"></div></div>
+            <span class="pd-pct" style="color:var(--emerald)">60%</span>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label" style="color:var(--sapphire)">Pengembangan Usaha</span>
+            <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:20%;background:var(--sapphire)"></div></div>
+            <span class="pd-pct" style="color:var(--sapphire)">20%</span>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label" style="color:var(--gold)">Fee Nazhir</span>
+            <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:10%;background:var(--gold)"></div></div>
+            <span class="pd-pct" style="color:var(--gold)">10%</span>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label" style="color:var(--amethyst)">Cadangan Risiko</span>
+            <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:8%;background:var(--amethyst)"></div></div>
+            <span class="pd-pct" style="color:var(--amethyst)">8%</span>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label" style="color:var(--teal)">Platform Fee</span>
+            <div class="pd-bar-bg"><div class="pd-bar-fill" style="width:2%;background:var(--teal)"></div></div>
+            <span class="pd-pct" style="color:var(--teal)">2%</span>
+          </div>
+        </div>
+      </div>
+      <div class="calc-panel reveal">
+        <h3>&#x1FA99; Simulasi Profit Sharing</h3>
+        <div class="calc-field">
+          <label>Pilih Usaha</label>
+          <select id="calcProject">
+            <option>Kebun Produktif Cianjur (12.3%)</option>
+            <option>Peternakan Wakaf Karawang (8.7%)</option>
+            <option>Minimarket Wakaf Depok (15.2%)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Modal Wakaf (Rp)</label>
+          <input type="number" id="calcAmount" value="2000000" min="10000" step="10000">
+        </div>
+        <button class="btn-calc" style="background:var(--amethyst)" onclick="calculate()">Hitung Simulasi</button>
+        <div class="calc-result" style="margin-top:16px">
+          <div class="calc-result-row"><span class="cr-l">Token Diperoleh</span><span class="cr-v" style="color:var(--amethyst)" id="resTokens">200 WAQF</span></div>
+          <div class="calc-result-row"><span class="cr-l">Est. Profit Usaha/Thn</span><span class="cr-v" style="color:var(--gold)" id="resProfit">Rp 246.000</span></div>
+          <div class="calc-result-row"><span class="cr-l">Ke Penerima Manfaat (60%)</span><span class="cr-v" style="color:var(--emerald)" id="resBenef">Rp 147.600</span></div>
+          <div class="calc-result-row"><span class="cr-l">Pengembangan Usaha (20%)</span><span class="cr-v" style="color:var(--sapphire)" id="resDev">Rp 49.200</span></div>
+          <div class="calc-result-row"><span class="cr-l">Biaya Wakif</span><span class="cr-v" style="color:var(--emerald)">Rp 0 (Gratis)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ KEUNGGULAN ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Keunggulan</div>
+      <h2>Mengapa Wakaf Usaha Produktif?</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F4C8;</div>
+        <h4>Profit Tinggi</h4>
+        <p>Usaha produktif menghasilkan profit lebih tinggi dibanding instrumen pasif. Rata-rata 9.4% per tahun dengan potensi naik seiring pertumbuhan usaha.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F465;</div>
+        <h4>Penciptaan Lapangan Kerja</h4>
+        <p>Setiap unit usaha wakaf menciptakan puluhan lapangan kerja langsung. Dampak ekonomi multiplier untuk komunitas sekitar.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F4CA;</div>
+        <h4>Laporan On-Chain</h4>
+        <p>Laporan keuangan usaha tercatat di blockchain. Revenue, expense, profit — semuanya dapat diverifikasi stakeholder secara real-time.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F331;</div>
+        <h4>Dampak Lingkungan</h4>
+        <p>Pertanian organik, peternakan berkelanjutan, dan praktik bisnis ramah lingkungan menjadi standar operasional usaha wakaf.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x2696;&#xFE0F;</div>
+        <h4>Akad Mudharabah</h4>
+        <p>Profit sharing sesuai prinsip syariah. Pembagian keuntungan transparan dan adil antara pengelola, penerima manfaat, dan cadangan.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F504;</div>
+        <h4>Siklus Berkelanjutan</h4>
+        <p>20% profit diinvestasikan kembali untuk pengembangan usaha. Bisnis tumbuh, profit naik, manfaat semakin besar — virtuous cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Waq<em>Fi</em></div>
+  <div class="f-tag">Pilar 4 — Wakaf Usaha Produktif</div>
+  <div class="f-badges">
+    <span class="f-badge">Profit Sharing</span>
+    <span class="f-badge">Mudharabah</span>
+    <span class="f-badge">Smart Contract Audit</span>
+  </div>
+  <div class="f-copy">&copy; 2026 WaqFi Team — Hackathon DIGDAYA 2026 | Universitas Tazkia</div>
+</footer>
+
+<script>
+function calculate() {
+  const profits = [12.3, 8.7, 15.2];
+  const idx = document.getElementById('calcProject').selectedIndex;
+  const amount = parseInt(document.getElementById('calcAmount').value) || 0;
+  const p = profits[idx];
+  const tokens = Math.floor(amount / 10000);
+  const annualProfit = Math.floor(amount * p / 100);
+  const benef = Math.floor(annualProfit * 0.6);
+  const dev = Math.floor(annualProfit * 0.2);
+  const fmt = n => 'Rp ' + n.toLocaleString('id-ID');
+  document.getElementById('resTokens').textContent = tokens + ' WAQF';
+  document.getElementById('resProfit').textContent = fmt(annualProfit);
+  document.getElementById('resBenef').textContent = fmt(benef);
+  document.getElementById('resDev').textContent = fmt(dev);
+}
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)} }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

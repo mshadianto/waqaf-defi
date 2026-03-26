@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WaqFi — Pilar 3: Wakaf Melalui Uang</title>
+  <meta name="description" content="Crowdfunding wakaf untuk pembelian aset baru. Dana terkumpul, beli aset, diwakafkan, kemudian di-tokenisasi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/pillar.css">
+  <style>
+    .campaign-countdown {
+      display: flex; gap: 12px; margin: 14px 0;
+    }
+    .cd-unit {
+      background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: var(--r-s); padding: 8px 12px; text-align: center; flex: 1;
+    }
+    .cd-unit .cd-num {
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;
+    }
+    .cd-unit .cd-lbl {
+      font-size: 9px; color: var(--tx-muted); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .backer-list {
+      display: flex; flex-direction: column; gap: 8px; margin-top: 16px; max-height: 200px; overflow-y: auto;
+    }
+    .backer-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px; background: var(--bg-deep); border-radius: var(--r-s);
+      font-size: 12px; border: 1px solid var(--border);
+    }
+    .backer-row .bk-name { font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .backer-row .bk-amount { font-weight: 700; font-family: var(--font-mono); font-size: 11px; }
+    .backer-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: white;
+    }
+    .milestone-track {
+      display: flex; flex-direction: column; gap: 12px; margin-top: 16px;
+    }
+    .milestone-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px; background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: var(--r-s); font-size: 12px;
+    }
+    .milestone-item.done { border-color: rgba(16,185,129,0.3); }
+    .ms-check {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+    .ms-check.done { background: rgba(16,185,129,0.15); color: var(--emerald); }
+    .ms-check.pending { background: var(--bg-card); color: var(--tx-dim); border: 1px solid var(--border); }
+    .ms-info { flex: 1; }
+    .ms-info .ms-title { font-weight: 700; margin-bottom: 2px; }
+    .ms-info .ms-desc { color: var(--tx-muted); font-size: 11px; }
+    .ms-pct { font-weight: 800; font-family: var(--font-display); font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div class="bg-pattern"></div>
+
+<a href="../index.html" class="back-nav">&#x2190; Kembali ke WaqFi</a>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="pillar-hero">
+  <div class="container">
+    <div>
+      <div class="pillar-hero-badge" style="background:rgba(245,158,11,0.1);color:var(--gold);border:1px solid rgba(245,158,11,0.2)">
+        &#x1F91D; Pilar 3 — Wakaf Melalui Uang
+      </div>
+      <h1 class="anim-up">
+        <span style="color:var(--gold)">Crowdfunding</span><br>
+        Wakaf Bersama
+      </h1>
+      <p class="pillar-hero-desc anim-up d1">
+        Patungan wakaf untuk membeli aset baru — masjid, sekolah, rumah sakit, atau lahan produktif. Dana terkumpul dari banyak wakif, aset dibeli dan diwakafkan, lalu di-tokenisasi untuk transparansi dan akuntabilitas penuh.
+      </p>
+      <div class="pillar-hero-stats anim-up d2">
+        <div class="ph-stat">
+          <div class="val" style="color:var(--gold)">8</div>
+          <div class="lbl">Kampanye Aktif</div>
+        </div>
+        <div class="ph-stat">
+          <div class="val" style="color:var(--gold)">2,450</div>
+          <div class="lbl">Total Wakif</div>
+        </div>
+        <div class="ph-stat">
+          <div class="val" style="color:var(--gold)">Rp 4.2M</div>
+          <div class="lbl">Dana Terhimpun</div>
+        </div>
+      </div>
+    </div>
+    <div class="anim-up d3">
+      <div class="pillar-summary">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)"></div>
+        <h3>&#x1F4CA; Ringkasan Pilar</h3>
+        <div class="ps-row"><span class="ps-label">Model</span><span class="ps-value">Crowdfunding &rarr; Beli &rarr; Wakaf</span></div>
+        <div class="ps-row"><span class="ps-label">Token Standard</span><span class="ps-value" style="color:var(--gold)">ERC-1400</span></div>
+        <div class="ps-row"><span class="ps-label">Min. Kontribusi</span><span class="ps-value" style="color:var(--gold)">Rp 10.000</span></div>
+        <div class="ps-row"><span class="ps-label">Mekanisme</span><span class="ps-value">Target-Based Funding</span></div>
+        <div class="ps-row"><span class="ps-label">Jika Target Gagal</span><span class="ps-value" style="color:var(--emerald)">&#x2705; Dana Dikembalikan</span></div>
+        <div class="ps-row"><span class="ps-label">Kampanye Aktif</span><span class="ps-value" style="color:var(--gold)">8 Kampanye</span></div>
+        <div class="ps-row"><span class="ps-label">Compliance</span><span class="ps-value">UU No. 41/2004</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ KAMPANYE AKTIF ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Kampanye Aktif</div>
+      <h2>Patungan Wakaf Bersama</h2>
+      <p class="sub">Bergabung dengan ribuan wakif lainnya untuk membangun aset wakaf baru</p>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(245,158,11,0.15))">&#x1F3E5;</div>
+        <div class="project-body">
+          <h4>RS Wakaf Surabaya</h4>
+          <div class="loc">&#x1F4CD; Surabaya, Jawa Timur &middot; 1,842 wakif</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:72%;background:var(--gold)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--gold)">Rp 3.6M</span>
+              <span>Target: Rp 5M</span>
+            </div>
+          </div>
+          <div class="campaign-countdown">
+            <div class="cd-unit"><div class="cd-num" style="color:var(--gold)">28</div><div class="cd-lbl">Hari</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--gold)">14</div><div class="cd-lbl">Jam</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--gold)">52</div><div class="cd-lbl">Menit</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="project-roi"><span style="color:var(--tx-muted)">72%</span><span style="font-weight:600;color:var(--gold);margin-left:4px">Terkumpul</span></div>
+            <button class="btn-invest" style="background:var(--gold)">Donasi Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(16,185,129,0.15))">&#x1F3EB;</div>
+        <div class="project-body">
+          <h4>Pesantren Digital Bogor</h4>
+          <div class="loc">&#x1F4CD; Bogor, Jawa Barat &middot; 956 wakif</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:48%;background:var(--emerald)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--emerald)">Rp 960Jt</span>
+              <span>Target: Rp 2M</span>
+            </div>
+          </div>
+          <div class="campaign-countdown">
+            <div class="cd-unit"><div class="cd-num" style="color:var(--emerald)">45</div><div class="cd-lbl">Hari</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--emerald)">8</div><div class="cd-lbl">Jam</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--emerald)">31</div><div class="cd-lbl">Menit</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="project-roi"><span style="color:var(--tx-muted)">48%</span><span style="font-weight:600;color:var(--emerald);margin-left:4px">Terkumpul</span></div>
+            <button class="btn-invest" style="background:var(--emerald)">Donasi Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img" style="background:linear-gradient(135deg,#0B1120,rgba(139,92,246,0.15))">&#x1F54C;</div>
+        <div class="project-body">
+          <h4>Masjid Raya Makassar</h4>
+          <div class="loc">&#x1F4CD; Makassar, Sulawesi Selatan &middot; 2,103 wakif</div>
+          <div class="project-progress">
+            <div class="bar-bg"><div class="bar-fill" style="width:91%;background:var(--amethyst)"></div></div>
+            <div class="progress-info">
+              <span class="raised" style="color:var(--amethyst)">Rp 2.73M</span>
+              <span>Target: Rp 3M</span>
+            </div>
+          </div>
+          <div class="campaign-countdown">
+            <div class="cd-unit"><div class="cd-num" style="color:var(--amethyst)">7</div><div class="cd-lbl">Hari</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--amethyst)">22</div><div class="cd-lbl">Jam</div></div>
+            <div class="cd-unit"><div class="cd-num" style="color:var(--amethyst)">10</div><div class="cd-lbl">Menit</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="project-roi"><span style="color:var(--tx-muted)">91%</span><span style="font-weight:600;color:var(--amethyst);margin-left:4px">Hampir Selesai!</span></div>
+            <button class="btn-invest" style="background:var(--amethyst)">Donasi Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CARA KERJA ═══════ -->
+<section class="section-pad section-tinted">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Cara Kerja</div>
+      <h2>Alur Crowdfunding Wakaf</h2>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--gold)">1</div>
+        <h4>Kampanye Dibuat</h4>
+        <p>Nazhir mengajukan proyek dengan target dana, timeline, dan rencana penggunaan. Diverifikasi DPS dan BWI.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--gold)">2</div>
+        <h4>Wakif Berkontribusi</h4>
+        <p>Wakif menyumbang mulai Rp 10.000. Dana masuk escrow smart contract, aman dan transparan.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--gold)">3</div>
+        <h4>Target Tercapai</h4>
+        <p>Jika target tercapai: dana digunakan beli aset &rarr; diwakafkan. Jika gagal: dana dikembalikan otomatis.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num" style="background:var(--gold)">4</div>
+        <h4>Tokenisasi Aset</h4>
+        <p>Aset yang dibeli di-tokenisasi jadi ERC-1400. Wakif mendapat token bukti partisipasi. ROI dari pengelolaan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DETAIL KAMPANYE (SAMPLE) ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Detail Kampanye</div>
+      <h2>RS Wakaf Surabaya — Milestone</h2>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-panel reveal">
+        <h3>&#x1F3C1; Milestone Proyek</h3>
+        <div class="milestone-track">
+          <div class="milestone-item done">
+            <div class="ms-check done">&#x2713;</div>
+            <div class="ms-info"><div class="ms-title">Verifikasi DPS</div><div class="ms-desc">Disetujui Dewan Pengawas Syariah</div></div>
+            <div class="ms-pct" style="color:var(--emerald)">&#x2705;</div>
+          </div>
+          <div class="milestone-item done">
+            <div class="ms-check done">&#x2713;</div>
+            <div class="ms-info"><div class="ms-title">25% Terkumpul</div><div class="ms-desc">Rp 1.25M dari 5M</div></div>
+            <div class="ms-pct" style="color:var(--emerald)">25%</div>
+          </div>
+          <div class="milestone-item done">
+            <div class="ms-check done">&#x2713;</div>
+            <div class="ms-info"><div class="ms-title">50% Terkumpul</div><div class="ms-desc">Rp 2.5M — Izin bangunan diproses</div></div>
+            <div class="ms-pct" style="color:var(--emerald)">50%</div>
+          </div>
+          <div class="milestone-item">
+            <div class="ms-check pending">4</div>
+            <div class="ms-info"><div class="ms-title">75% Terkumpul</div><div class="ms-desc">Kontrak kontraktor ditandatangani</div></div>
+            <div class="ms-pct" style="color:var(--tx-dim)">75%</div>
+          </div>
+          <div class="milestone-item">
+            <div class="ms-check pending">5</div>
+            <div class="ms-info"><div class="ms-title">100% Target</div><div class="ms-desc">Pembangunan dimulai, tokenisasi aset</div></div>
+            <div class="ms-pct" style="color:var(--tx-dim)">100%</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-panel reveal">
+        <h3>&#x1F465; Kontributor Terbaru</h3>
+        <div class="backer-list">
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--emerald)">AF</div>Ahmad Fauzi</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 5.000.000</div>
+          </div>
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--sapphire)">SA</div>Siti Aminah</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 2.500.000</div>
+          </div>
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--amethyst)">BS</div>Budi Santoso</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 1.000.000</div>
+          </div>
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--gold)">FZ</div>Fatimah Zahra</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 500.000</div>
+          </div>
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--teal)">RR</div>Rizki Ramadhan</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 250.000</div>
+          </div>
+          <div class="backer-row">
+            <div class="bk-name"><div class="backer-avatar" style="background:var(--ruby)">NH</div>Nur Halimah</div>
+            <div class="bk-amount" style="color:var(--gold)">Rp 100.000</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px;font-size:11px;color:var(--tx-muted)">dan 1,836 wakif lainnya...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ KEUNGGULAN ═══════ -->
+<section class="section-pad section-tinted">
+  <div class="container">
+    <div class="sec-hdr reveal">
+      <div class="overline">Keunggulan</div>
+      <h2>Mengapa Crowdfunding Wakaf di WaqFi?</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F91D;</div>
+        <h4>Kekuatan Kolektif</h4>
+        <p>Ribuan wakif bersama-sama membangun aset wakaf yang tidak mungkin dicapai sendiri. Dari Rp 10.000 menjadi miliaran.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F512;</div>
+        <h4>Escrow Smart Contract</h4>
+        <p>Dana tersimpan aman di escrow blockchain. Jika target tidak tercapai, dana otomatis dikembalikan tanpa potongan.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F3C1;</div>
+        <h4>Milestone Tracking</h4>
+        <p>Pantau progres kampanye secara real-time. Setiap milestone tercatat on-chain untuk akuntabilitas penuh.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F4F8;</div>
+        <h4>Update Berkala</h4>
+        <p>Nazhir wajib memberikan update progres yang tercatat di blockchain. Wakif dapat memverifikasi penggunaan dana.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1FA99;</div>
+        <h4>Token Bukti Partisipasi</h4>
+        <p>Setelah aset dibeli dan diwakafkan, wakif menerima token sebagai bukti partisipasi yang tercatat permanen.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">&#x1F30D;</div>
+        <h4>Impact Nyata</h4>
+        <p>Lihat langsung dampak kontribusi Anda — berapa penerima manfaat, berapa aset produktif, berapa nilai sosial yang tercipta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Waq<em>Fi</em></div>
+  <div class="f-tag">Pilar 3 — Wakaf Melalui Uang (Crowdfunding)</div>
+  <div class="f-badges">
+    <span class="f-badge">Crowdfunding</span>
+    <span class="f-badge">Escrow Smart Contract</span>
+    <span class="f-badge">Refundable</span>
+  </div>
+  <div class="f-copy">&copy; 2026 WaqFi Team — Hackathon DIGDAYA 2026 | Universitas Tazkia</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)} }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

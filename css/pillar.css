@@ -1,0 +1,275 @@
+/*═══════════════════════════════════════════════════════════════
+  WaqFi — Pillar Detail Pages (Shared Styles)
+═══════════════════════════════════════════════════════════════*/
+
+/* ── Pillar Hero ── */
+.pillar-hero {
+  min-height: 60vh; display: flex; align-items: center;
+  padding-top: 100px; padding-bottom: 60px;
+  position: relative; overflow: hidden;
+}
+
+.pillar-hero .container {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px; align-items: center;
+}
+
+.pillar-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 20px; font-size: 11px;
+  font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.pillar-hero h1 {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 900; line-height: 1.15; margin-bottom: 18px;
+}
+
+.pillar-hero-desc {
+  font-size: 1.05rem; color: var(--tx-light);
+  line-height: 1.8; margin-bottom: 32px; max-width: 540px;
+}
+
+.pillar-hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+
+.ph-stat {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-m); padding: 18px; text-align: center;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.ph-stat:hover { border-color: var(--border-a); transform: translateY(-2px); }
+.ph-stat .val {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;
+}
+.ph-stat .lbl {
+  font-size: 10px; color: var(--tx-muted);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* ── Summary Card (Hero Right) ── */
+.pillar-summary {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-l); padding: 28px; position: relative; overflow: hidden;
+}
+.pillar-summary::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.pillar-summary h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ps-row {
+  display: flex; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.ps-row:last-child { border: none; }
+.ps-label { color: var(--tx-muted); }
+.ps-value { font-weight: 700; font-family: var(--font-mono); font-size: 12px; }
+
+/* ── Back Nav ── */
+.back-nav {
+  position: fixed; top: 18px; left: 24px; z-index: 1001;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--tx-muted); font-size: 12px; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px;
+  background: rgba(6,10,16,0.8); backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  transition: all var(--dur-base) ease; cursor: pointer;
+  text-decoration: none;
+}
+.back-nav:hover { color: var(--emerald); border-color: var(--border-a); }
+
+/* ── Project Cards Grid ── */
+.projects-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 40px;
+}
+
+.project-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-l); overflow: hidden;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.project-card:hover { border-color: var(--border-a); transform: translateY(-4px); }
+
+.project-img {
+  width: 100%; height: 180px; object-fit: cover;
+  background: var(--bg-deep); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 48px; color: var(--tx-dim);
+}
+
+.project-body { padding: 22px; }
+
+.project-body h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
+}
+
+.project-body .loc {
+  font-size: 11px; color: var(--tx-muted); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 4px;
+}
+
+.project-progress { margin-bottom: 14px; }
+.project-progress .bar-bg {
+  width: 100%; height: 6px; background: var(--bg-deep);
+  border-radius: 3px; overflow: hidden; margin-bottom: 8px;
+}
+.project-progress .bar-fill {
+  height: 100%; border-radius: 3px;
+  transition: width 1s var(--ease-bounce);
+}
+.project-progress .progress-info {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--tx-muted);
+}
+.project-progress .progress-info .raised { font-weight: 700; }
+
+.project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.project-tag {
+  font-size: 9px; font-weight: 700; padding: 3px 8px;
+  border-radius: var(--r-xs); text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 14px; border-top: 1px solid var(--border);
+}
+
+.project-roi {
+  font-size: 12px; display: flex; align-items: center; gap: 6px;
+}
+.project-roi .roi-val { font-weight: 800; font-family: var(--font-display); font-size: 1.1rem; }
+
+.btn-invest {
+  padding: 8px 20px; border-radius: var(--r-s); border: none;
+  font-weight: 700; font-size: 12px; color: white;
+  transition: all var(--dur-base) ease; cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.btn-invest:hover { transform: translateY(-1px); }
+
+/* ── How It Works ── */
+.hiw-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-top: 40px; position: relative;
+}
+.hiw-grid::before {
+  content: ''; position: absolute;
+  top: 36px; left: 12%; right: 12%; height: 2px;
+  background: var(--border);
+}
+
+.hiw-step {
+  text-align: center; position: relative;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-l); padding: 28px 20px;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.hiw-step:hover { border-color: var(--border-a); transform: translateY(-3px); }
+
+.hiw-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; font-weight: 800;
+  margin: 0 auto 16px; color: white; position: relative; z-index: 2;
+}
+
+.hiw-step h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.hiw-step p { font-size: 12px; color: var(--tx-muted); line-height: 1.6; }
+
+/* ── Investment Calculator ── */
+.calc-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 28px; margin-top: 40px;
+}
+
+.calc-panel {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-l); padding: 28px;
+}
+.calc-panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.calc-field { margin-bottom: 16px; }
+.calc-field label {
+  display: block; font-size: 11px; font-weight: 600;
+  color: var(--tx-muted); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 6px;
+}
+.calc-field input, .calc-field select {
+  width: 100%; background: var(--bg-deep); border: 1px solid var(--border);
+  border-radius: var(--r-s); padding: 12px 14px;
+  color: var(--tx-white); font-size: 14px; outline: none;
+  transition: border-color var(--dur-base) ease;
+  font-family: inherit;
+}
+.calc-field input:focus, .calc-field select:focus {
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+}
+
+.calc-result {
+  background: var(--bg-deep); border: 1px solid var(--border);
+  border-radius: var(--r-m); padding: 20px; margin-top: 8px;
+}
+.calc-result-row {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.calc-result-row:last-child { border: none; }
+.calc-result-row .cr-l { color: var(--tx-muted); }
+.calc-result-row .cr-v { font-weight: 700; font-family: var(--font-mono); font-size: 12px; }
+
+.btn-calc {
+  width: 100%; padding: 14px; border: none; border-radius: var(--r-s);
+  font-weight: 700; font-size: 14px; color: white; cursor: pointer;
+  transition: all var(--dur-base) ease; margin-top: 8px;
+}
+.btn-calc:hover { transform: translateY(-2px); }
+
+/* ── Benefit Cards ── */
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 40px;
+}
+
+.benefit-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--r-l); padding: 28px;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.benefit-card:hover { border-color: var(--border-a); transform: translateY(-3px); }
+.benefit-icon {
+  font-size: 32px; margin-bottom: 16px;
+}
+.benefit-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.benefit-card p { font-size: 12.5px; color: var(--tx-muted); line-height: 1.7; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pillar-hero .container { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .hiw-grid { grid-template-columns: repeat(2, 1fr); }
+  .hiw-grid::before { display: none; }
+  .calc-wrap { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .pillar-hero h1 { font-size: 2rem; }
+  .pillar-hero-stats { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .hiw-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: 1fr; }
+}
