@@ -10,6 +10,7 @@
 
   .pillars-grid { grid-template-columns: repeat(2, 1fr); }
   .dash-grid { grid-template-columns: repeat(2, 1fr); }
+  .dalil-grid { grid-template-columns: 1fr !important; }
   .sc-demo-wrap { grid-template-columns: 1fr; }
   .charts-row { grid-template-columns: 1fr; }
   .compliance-grid { grid-template-columns: repeat(2, 1fr); }
